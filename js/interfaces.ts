@@ -1,0 +1,37 @@
+﻿interface ImageInfo {
+	url?: string;
+	type?: string;
+	mimeType?: string;
+	fileSize?: number;
+	width?: number;
+	height?: number;
+	bitDepth?: number;
+	frames?: number;
+	framerate?: number;
+	duration?: number;
+
+	metadata?: { [key: string]: string; };
+}
+
+interface IMessage {
+	action: string;
+}
+
+interface IAnalyzeMessage extends IMessage {
+	filename: string;
+	mimeType: string;
+	url: string;
+}
+
+interface IDialogMessage extends IMessage {
+	data?: ImageInfo;
+	url?: string;
+	error?: string;
+}
+
+interface ISaveMessage extends IMessage {
+	filename?: string;
+	force?: boolean;
+	saveAs: boolean;
+	url: string;
+}

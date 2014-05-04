@@ -1,0 +1,101 @@
+﻿<!doctype html>
+<html class="wallpaper">
+<head>
+	<meta charset="utf-8">
+	<title>__MSG_title_options_page_tab__</title>
+
+	<link rel="icon" href="/img/icon-16.png">
+	<link rel="stylesheet" href="/css/options.css">
+	<link rel="stylesheet" href="/css/options-custom.css">
+	<link rel="stylesheet" href="/css/background.css">
+	<script src="/js/lib/storage.js"></script>
+	<script src="/js/lib/options-page.js"></script>
+	<script src="/js/options.js"></script>
+	<script src="/js/settings.js"></script>
+</head>
+<body>
+	<div id="wallpaper"></div>
+	<div id="content">
+
+		<header>
+			<img src="/img/icon-48.png" alt="Classic Images icon">
+			<div>
+				<h1><span data-manifest="name"></span> <span data-manifest="version" class="version"></span></h1>
+				<h2><span data-msg="by"></span> <span data-manifest="developer.name"></span></h2>
+			</div>
+		</header>
+
+		<section id="click-actions">
+			<h3 data-msg="title_image_actions"></h3>
+			<p class="warning" id="no-downloads-api" data-msg="html:warn_no_downloads_api" hidden></p>
+
+			<p>
+				<span class="row">
+					<span><code data-msg="ctrl"></code> + <span data-msg="click"></span></span>
+					<label class="radiobutton"><input type="radio" name="ctrlAction" value="saveas"><span data-msg="save_as"></span></label>
+					<label class="radiobutton"><input type="radio" name="ctrlAction" value="save"><span data-msg="save_to_downloads"></span></label>
+					<label class="radiobutton"><input type="radio" name="ctrlAction" value="none"><span data-msg="browser_default"></span></label>
+				</span>
+			</p>
+			<p>
+				<span class="row">
+					<span><code data-msg="shift"></code> + <span data-msg="click"></span></span>
+					<label class="radiobutton"><input type="radio" name="shiftAction" value="saveas"><span data-msg="save_as"></span></label>
+					<label class="radiobutton"><input type="radio" name="shiftAction" value="save"><span data-msg="save_to_downloads"></span></label>
+					<label class="radiobutton"><input type="radio" name="shiftAction" value="none"><span data-msg="browser_default"></span></label>
+				</span>
+			</p>
+			<p>
+				<span class="row">
+					<span><code data-msg="ctrl"></code> + <code data-msg="alt"></code> + <span data-msg="click"></span></span>
+					<label class="radiobutton"><input type="radio" name="ctrlAltAction" value="saveas"><span data-msg="save_as"></span></label>
+					<label class="radiobutton"><input type="radio" name="ctrlAltAction" value="save"><span data-msg="save_to_downloads"></span></label>
+					<label class="radiobutton"><input type="radio" name="ctrlAltAction" value="none"><span data-msg="browser_default"></span></label>
+				</span>
+			</p>
+			<p>
+				<span class="row">
+					<span><code data-msg="shift"></code> + <code data-msg="alt"></code> + <span data-msg="click"></span></span>
+					<label class="radiobutton"><input type="radio" name="shiftAltAction" value="saveas"><span data-msg="save_as"></span></label>
+					<label class="radiobutton"><input type="radio" name="shiftAltAction" value="save"><span data-msg="save_to_downloads"></span></label>
+					<label class="radiobutton"><input type="radio" name="shiftAltAction" value="none"><span data-msg="browser_default"></span></label>
+				</span>
+			</p>
+			<p>
+				<span class="row">
+					<span><code data-msg="ctrl"></code> + <code data-msg="shift"></code> + <span data-msg="click"></span></span>
+					<label class="radiobutton"><input type="radio" name="ctrlShiftAction" value="saveas"><span data-msg="save_as"></span></label>
+					<label class="radiobutton"><input type="radio" name="ctrlShiftAction" value="save"><span data-msg="save_to_downloads"></span></label>
+					<label class="radiobutton"><input type="radio" name="ctrlShiftAction" value="none"><span data-msg="browser_default"></span></label>
+				</span>
+			</p>
+
+			<h4 data-msg="title_if_downloads_fail"></h4>
+			<p data-msg="html:info_if_downloads_fail"></p>
+
+			<p data-msg="info_special_patterns"></p>
+			<dl>
+				<dt><code>*</code></dt>
+				<dd data-msg="zero_or_more_chars"></dd>
+				<dt><code>[ ]</code></dt>
+				<dd data-msg="bracketed_chars_optional"></dd>
+				<dt><code>[*.]</code></dt>
+				<dd data-msg="any_subdomain"></dd>
+			</dl>
+
+			<p>
+				<label class="wrap">
+					<span class="line" data-msg="title_restricted_domains"></span>
+					<textarea name="restrictedDomains" class="full tall" data-savefunc="linesToArray" data-loadfunc="arrayToLines"></textarea>
+				</label>
+			</p>
+		</section>
+
+		<footer>
+			<p>&copy; 2013–2014 Joel Spadin</p>
+			<p><a href="https://github.com/santhoshtr/CLDRPluralRuleParser">CLDRPluralRuleParser</a> by Santhosh Thottingal</p>
+			<p><a href="https://github.com/buzzfeed/libgif-js">libgif.js</a> by Shachaf Ben-Kiki and BuzzFeed</p>
+		</footer>
+	</div>
+</body>
+</html>

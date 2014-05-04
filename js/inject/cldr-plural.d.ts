@@ -1,0 +1,1 @@
+﻿declare function pluralRuleParser(rule: string, n: number): string;

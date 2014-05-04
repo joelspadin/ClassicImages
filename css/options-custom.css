@@ -1,0 +1,103 @@
+﻿code {
+    font-weight: normal;
+    margin: 0 2px;
+    padding: 0 5px;
+    border: 1px solid #dddddd;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+}
+
+code:first-child {
+    margin-left: 0;
+}
+
+p {
+    line-height: 1.5;
+}
+
+p.warning {
+    border: 1px solid #ddb100;
+    background: #fff8dd;
+    padding: 5px 10px;
+}
+
+p.warning::before {
+    content: '';
+    display: block;
+    float: left;
+    width: 30px;
+    height: 30px;
+    margin-top: 3px;
+    margin-right: 10px;
+    background: url(/img/warning.svg) center no-repeat;
+    background-size: contain;
+}
+
+p.warning code {
+    border-color: #ddb100;
+    background-color: #fea;
+}
+
+section label.radiobutton input[type=checkbox],
+section label.radiobutton input[type=radio] {
+    display: none;
+}
+
+section label.radiobutton input[type=checkbox] + span,
+section label.radiobutton input[type=radio] + span {
+    min-width: 0;
+    padding: 5px 20px;
+    text-align: center;
+    background: #fcfcfc;
+    border: 1px solid #cccccc;
+}
+
+section label.radiobutton input[type=checkbox] + span:hover,
+section label.radiobutton input[type=radio] + span:hover {
+    background-color: #f4f4f4;
+}
+
+section label.radiobutton input[type=checkbox]:checked + span,
+section label.radiobutton input[type=radio]:checked + span {
+    background-color: #1979ca;
+    color: #ffffff;
+}
+
+section label.radiobutton input[type=checkbox]:checked + span:hover,
+section label.radiobutton input[type=radio]:checked + span:hover {
+    background-color: #1b81d8;
+}
+
+section label.radiobutton + label.radiobutton input + span {
+    border-left: none;
+}
+
+section label.radiobutton:first-of-type input + span {
+    margin-left: 20px;
+    border-radius: 4px 0 0 4px;
+}
+
+section label.radiobutton:last-of-type input + span {
+    border-radius: 0 4px 4px 0;
+}
+
+#click-actions span.row > span {
+    min-width: 160px;
+}
+
+dl {
+    margin: 0.65rem 0;
+}
+
+dl dt {
+    clear: left;
+    float: left;
+    width: 3em;
+    margin: 0;
+    padding: 5px 0;
+}
+
+dl dd {
+    margin-left: 4em;
+    padding: 5px 0;
+}

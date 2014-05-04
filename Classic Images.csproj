@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProjectGuid>{C8F8C01C-62D3-11E3-8F22-C485085E2F35}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <OutputPath>bin</OutputPath>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>ClassicImages</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyName>ClassicImages</AssemblyName>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Condition="'$(VSToolsPath)' != ''" Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>15098</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptIncludeComments>true</TypeScriptIncludeComments>
+    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+    <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptIncludeComments>false</TypeScriptIncludeComments>
+    <TypeScriptSourceMap>false</TypeScriptSourceMap>
+    <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
+  </PropertyGroup>
+  <Import Project="$(VSToolsPath)\TypeScript\Microsoft.TypeScript.targets" />
+  <ItemGroup>
+    <Content Include="css\inject\dialog.css">
+      <DependentUpon>dialog.less</DependentUpon>
+    </Content>
+    <Content Include="css\inject\dialog.min.css">
+      <DependentUpon>dialog.css</DependentUpon>
+    </Content>
+    <Content Include="css\options-custom.css">
+      <DependentUpon>options-custom.less</DependentUpon>
+    </Content>
+    <Content Include="js\inject\filesize.js" />
+    <Content Include="js\inject\cldr-plural.js" />
+    <Content Include="_locales\en_US\messages.json" />
+    <TypeScriptCompile Include="js\dynamic-inject.ts" />
+    <TypeScriptCompile Include="js\inject\cldr-plural.d.ts" />
+    <TypeScriptCompile Include="js\inject\dialog.ts" />
+    <TypeScriptCompile Include="js\inject\keys.ts" />
+    <TypeScriptCompile Include="js\interfaces.ts" />
+    <TypeScriptCompile Include="js\inject\filesize.d.ts" />
+    <TypeScriptCompile Include="js\lib\libgif.d.ts" />
+    <TypeScriptCompile Include="js\options.ts" />
+    <Content Include="js\inject\keys.js">
+      <DependentUpon>keys.ts</DependentUpon>
+    </Content>
+    <None Include="js\lib\libgif-js LICENSE" />
+    <Content Include="js\lib\libgif.js" />
+    <Content Include="js\options.js">
+      <DependentUpon>options.ts</DependentUpon>
+    </Content>
+    <Content Include="manifest.json" />
+    <Content Include="options-page.html" />
+    <Content Include="css\background.css" />
+    <Content Include="css\options.css">
+      <DependentUpon>options.less</DependentUpon>
+    </Content>
+    <Content Include="css\options.less" />
+    <Content Include="img\icon-16.png" />
+    <Content Include="img\icon-48.png" />
+    <Content Include="img\pattern\use_your_illusion.png" />
+    <Content Include="img\pattern\use_your_illusion_@2X.png" />
+    <Content Include="js\background.js">
+      <DependentUpon>background.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="js\background.ts" />
+    <Content Include="js\settings.js">
+      <DependentUpon>settings.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="js\settings.ts" />
+    <Content Include="js\lib\chrome.d.ts" />
+    <Content Include="js\lib\options-page.js">
+      <DependentUpon>options-page.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="js\lib\options-page.ts" />
+    <Content Include="js\lib\storage.js">
+      <DependentUpon>storage.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="js\lib\storage.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\options-custom.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\inject\dialog.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\inject\dialog.css.map">
+      <DependentUpon>dialog.css</DependentUpon>
+    </Content>
+  </ItemGroup>
+</Project>
