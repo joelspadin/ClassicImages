@@ -99,11 +99,11 @@
         "description": "Option which saves images directly to the downloads folder"
     },
     "browser_default": {
-        "message": "Browser default",
+        "message": "Domyślna przeglądarka",
         "description": "Option which leaves the browser behavior unchanged"
     },
     "zero_or_more_chars": {
-        "message": "Zero lub więcej dowolnego znaku",
+        "message": "Zero lub więcej dowolnych znaków",
         "description": "Pattern description for * which matches zero or more characters"
     },
     "bracketed_chars_optional": {
