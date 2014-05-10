@@ -15,6 +15,7 @@ If you'd like to see this extension in another language:
 2. Make a copy of `_locales/en_US`.
 3. Rename the folder to match the language code of your new language.
 4. Translate `messages.json`.
+5. Translate `description.txt` (this goes on Opera's add-ons site)
 5. Commit it and send me a pull request.
 
 See [chrome.i18n](https://developer.chrome.com/extensions/i18n) for more details on the localization system.

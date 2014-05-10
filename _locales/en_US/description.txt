@@ -1,0 +1,7 @@
+﻿Classic Images brings back some of the image handling features that were lost in the transition from Opera 12 to 15.
+
+Current features:
+- Alt+Ctrl+Click to save images (Shortcut keys are configurable. Opera 20+ required to use "Save as" dialog.)
+- Image properties pop-up
+
+Let me know if there are any other image features you'd like brought back.
