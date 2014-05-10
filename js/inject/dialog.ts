@@ -20,8 +20,13 @@ function createConnection() {
 				dialog.updateImageInfo(message.data);
 				break;
 
-			case 'parse-error':
+			case 'analysis-done':
+				dialog.doneAnalyzing();
+				break;
+
+			case 'analysis-error':
 				dialog.showLoadError(message.error);
+				dialog.doneAnalyzing();
 				break;
 		}
 	});
@@ -105,18 +110,21 @@ module dialog {
 		Metadata
 	}
 
-	var OVERLAY_ID = '__ext_classic_images_overlay__';
 	var CONTENT_ID = '__ext_classic_images_content__';
-	var TABS_ID = '__ext_classic_images_tabs__';
 	var EXIF_TAB_ID = '__ext_classic_images_metadata__';
-	var SELECTED_CLASS = '__ext_classic_images_selected_tab__';
-	var PULSE_CLASS = '__ext_classic_images_pulse__';
-	var TRANSPARENT_CLASS = '__ext_classic_images_transparent__';
-	var HIDDEN_TEXT_CLASS = '__ext_classic_images_hidden_text__';
+	var OVERLAY_ID = '__ext_classic_images_overlay__';
+	var TABS_ID = '__ext_classic_images_tabs__';
+	
 	var ANALYZING_CLASS = '__ext_classic_images_analyzing__';
 	var ERROR_CLASS = '__ext_classic_images_error__';
+	var HIDDEN_TEXT_CLASS = '__ext_classic_images_hidden_text__';
+	var PROGRESS_CLASS = '__ext_classic_images_progress__';
+	var PULSE_CLASS = '__ext_classic_images_pulse__';
+	var SELECTED_CLASS = '__ext_classic_images_selected_tab__';
+	var TRANSPARENT_CLASS = '__ext_classic_images_transparent__';
 
 	var ANIMATION_LENGTH = 200;
+	var PROGRESS_BAR_DOTS = 6;
 
 	var BUTTONS = [
 		{ text: localize('close'), action: close },
@@ -161,6 +169,7 @@ module dialog {
 
 	export var overlay: HTMLElement = null;
 	export var content: HTMLElement = null;
+	export var progress: HTMLElement = null;
 	export var tabSelector: HTMLElement = null;
 	export var tabs: HTMLElement[] = [];
 	export var info: ImageInfo = {};
@@ -193,12 +202,17 @@ module dialog {
 		window.setTimeout(() => {
 			dialog.overlay.removeAttribute('style');
 			dialog.overlay.classList.remove(TRANSPARENT_CLASS);
+			dialog.progress.classList.remove(TRANSPARENT_CLASS);
 		}, 10);
 	}
 
 	export function showLoadError(message: string) {
 		var error = elem('p', message, { 'class': ERROR_CLASS });
 		dialog.content.insertBefore(error, dialog.content.querySelector('footer'));
+	}
+
+	export function doneAnalyzing() {
+		dialog.progress.classList.add(TRANSPARENT_CLASS);
 	}
 
 	export function updateImageInfo(info: ImageInfo) {
@@ -288,6 +302,11 @@ module dialog {
 		// Dialog header
 		var header = elem('header', localize('title_image_properties'));
 
+		progress = elem('div', { 'class': PROGRESS_CLASS });
+		for (var i = 0; i < PROGRESS_BAR_DOTS; i++) {
+			progress.appendChild(elem('span'));
+		}
+
 		// Tab Header
 		dialog.tabSelector = elem('div', { id: TABS_ID });
 		dialog.tabSelector.hidden = true;
@@ -317,7 +336,7 @@ module dialog {
 			footer.appendChild(button);
 		});
 
-		appendTo(content, header, dialog.tabSelector, maintab, metatab, footer);
+		appendTo(content, header, dialog.progress, dialog.tabSelector, maintab, metatab, footer);
 
 		dialog.overlay.appendChild(dialog.content);
 		document.body.appendChild(dialog.overlay);

@@ -9,6 +9,11 @@
 @selected-background: #1979ca;
 @selected-text: #fff;
 
+@progress-dot-color: #a7a7a7;
+@progress-dot-size: 6px;
+@progress-dot-count: 6;
+@progress-animation-length: 3s;
+
 @hpadding: 26px;
 
 @direction: ~"__MSG_@@bidi_dir__";
@@ -275,6 +280,54 @@
 		-webkit-animation-timing-function: ease-in-out;
 		animation-timing-function: ease-in-out;
 	}
+
+	.__ext_classic_images_progress__ {
+		overflow: hidden;
+		position: relative;
+		margin-bottom: -@progress-dot-size;
+		height: @progress-dot-size;
+		opacity: 1;
+
+		transition: opacity 0.2s;
+
+		span {
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: @progress-dot-size;
+			height: @progress-dot-size;
+			border-radius: 50%;
+			opacity: 0;
+
+			background: @progress-dot-color;
+
+			-webkit-animation: __ext_classic_images_progress__ @progress-animation-length cubic-bezier(0, 0.6, 1, 0.4) infinite;
+			animation: __ext_classic_images_progress__ @progress-animation-length cubic-bezier(0, 0.6, 1, 0.4) infinite;
+		}
+
+		// Recursive loop class
+		.dot_loop (@index) when (@index > 0) {
+			span:nth-of-type(@{index}) {
+				margin-left: @progress-dot-size * (@progress-dot-count / 2 - @index + 0.5);
+				-webkit-animation-delay: @progress-animation-length / 50 * (@index - 1);
+				animation-delay: @progress-animation-length / 50 * (@index - 1);
+			}
+
+			// Continue loop
+			.dot_loop(@index - 1);
+		}
+
+		// End loop
+		.dot_loop (0) {}
+
+		// Generate dot styles
+		.dot_loop (@progress-dot-count);
+
+		&.__ext_classic_images_transparent__ {
+			opacity: 0;
+		}
+	}
 }
 
 @keyframes __ext_classic_images_pulse__ {
@@ -327,5 +380,56 @@
 
 	100% {
 		width: 1em;
+	}
+}
+
+@keyframes __ext_classic_images_progress__ {
+	0% {
+		left: 50%;
+		opacity: 1;
+	}
+
+	35% {
+		opacity: 0.5;
+	}
+	
+	49% {
+		left: 100%;
+	    opacity: 0.5;
+	}
+	
+	51% {
+		left: 0;
+		opacity: 0.5;
+	}
+	
+	100% {
+		left: 50%;
+		opacity: 1;
+	}
+}
+
+@-webkit-keyframes __ext_classic_images_progress__ {
+	0% {
+		left: 0;
+		opacity: 0;
+	}
+	
+	20% {
+	    opacity: 1;
+	}
+
+	60% {
+		opacity: 1;
+	}
+	
+	80% {
+		left: 100%;
+		opacity: 0;
+	}
+
+	100% {
+		left: 100%;
+		opacity: 0;
 	}
 }

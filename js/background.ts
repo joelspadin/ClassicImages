@@ -165,6 +165,11 @@ module ImageProperties {
 							case 'JPEG':
 								JpegParser.parse(fr.result, info, callback);
 								break;
+
+							default:
+								// No further analysis to do. Send back a 'null' to indicate we're done.
+								callback(null, null);
+								break;
 						}
 					} catch (e) {
 						callback(chrome.i18n.getMessage('error_analyze_failed', [e.toString()]), null);
@@ -180,16 +185,22 @@ module ImageProperties {
 		fr.readAsArrayBuffer(blob);
 	}
 
-	function sendInfoResponse(info, port: chrome.runtime.Port) {
-		port.postMessage({
-			action: 'extend-properties',
-			data: info
-		});
+	function sendInfoResponse(info: ImageInfo, port: chrome.runtime.Port) {
+		if (info === null) {
+			port.postMessage({
+				action: 'analysis-done'
+			});
+		} else {
+			port.postMessage({
+				action: 'extend-properties',
+				data: info
+			});
+		}
 	}
 
 	function sendErrorResponse(error: string, port: chrome.runtime.Port) {
 		port.postMessage({
-			action: 'parse-error',
+			action: 'analysis-error',
 			error: error
 		});
 	}
@@ -320,6 +331,7 @@ module ImageProperties {
 				}
 
 				this.callback(null, this.info);
+				this.callback(null, null);
 			}
 		}
 
@@ -341,10 +353,11 @@ module ImageProperties {
 				console.log(info.metadata);
 				
 				callback(null, info);
+				callback(null, null);
 			} catch (e) {
 				if (e instanceof Error && (<Error>e).message === 'No Exif data') {
 					// Image doesn't have exif data. Ignore.
-					console.log('no exif data');
+					callback(null, null);
 				} else {
 					throw e;
 				}

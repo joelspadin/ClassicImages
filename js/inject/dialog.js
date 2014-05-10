@@ -19,8 +19,13 @@ function createConnection() {
                 dialog.updateImageInfo(message.data);
                 break;
 
-            case 'parse-error':
+            case 'analysis-done':
+                dialog.doneAnalyzing();
+                break;
+
+            case 'analysis-error':
                 dialog.showLoadError(message.error);
+                dialog.doneAnalyzing();
                 break;
         }
     });
@@ -98,18 +103,21 @@ var dialog;
         Tabs[Tabs["Metadata"] = 1] = "Metadata";
     })(Tabs || (Tabs = {}));
 
-    var OVERLAY_ID = '__ext_classic_images_overlay__';
     var CONTENT_ID = '__ext_classic_images_content__';
-    var TABS_ID = '__ext_classic_images_tabs__';
     var EXIF_TAB_ID = '__ext_classic_images_metadata__';
-    var SELECTED_CLASS = '__ext_classic_images_selected_tab__';
-    var PULSE_CLASS = '__ext_classic_images_pulse__';
-    var TRANSPARENT_CLASS = '__ext_classic_images_transparent__';
-    var HIDDEN_TEXT_CLASS = '__ext_classic_images_hidden_text__';
+    var OVERLAY_ID = '__ext_classic_images_overlay__';
+    var TABS_ID = '__ext_classic_images_tabs__';
+
     var ANALYZING_CLASS = '__ext_classic_images_analyzing__';
     var ERROR_CLASS = '__ext_classic_images_error__';
+    var HIDDEN_TEXT_CLASS = '__ext_classic_images_hidden_text__';
+    var PROGRESS_CLASS = '__ext_classic_images_progress__';
+    var PULSE_CLASS = '__ext_classic_images_pulse__';
+    var SELECTED_CLASS = '__ext_classic_images_selected_tab__';
+    var TRANSPARENT_CLASS = '__ext_classic_images_transparent__';
 
     var ANIMATION_LENGTH = 200;
+    var PROGRESS_BAR_DOTS = 6;
 
     var BUTTONS = [
         { text: localize('close'), action: close }
@@ -164,6 +172,7 @@ var dialog;
 
     dialog.overlay = null;
     dialog.content = null;
+    dialog.progress = null;
     dialog.tabSelector = null;
     dialog.tabs = [];
     dialog.info = {};
@@ -197,6 +206,7 @@ var dialog;
         window.setTimeout(function () {
             dialog.overlay.removeAttribute('style');
             dialog.overlay.classList.remove(TRANSPARENT_CLASS);
+            dialog.progress.classList.remove(TRANSPARENT_CLASS);
         }, 10);
     }
     dialog.show = show;
@@ -206,6 +216,11 @@ var dialog;
         dialog.content.insertBefore(error, dialog.content.querySelector('footer'));
     }
     dialog.showLoadError = showLoadError;
+
+    function doneAnalyzing() {
+        dialog.progress.classList.add(TRANSPARENT_CLASS);
+    }
+    dialog.doneAnalyzing = doneAnalyzing;
 
     function updateImageInfo(info) {
         for (var key in info) {
@@ -295,6 +310,11 @@ var dialog;
         // Dialog header
         var header = elem('header', localize('title_image_properties'));
 
+        dialog.progress = elem('div', { 'class': PROGRESS_CLASS });
+        for (var i = 0; i < PROGRESS_BAR_DOTS; i++) {
+            dialog.progress.appendChild(elem('span'));
+        }
+
         // Tab Header
         dialog.tabSelector = elem('div', { id: TABS_ID });
         dialog.tabSelector.hidden = true;
@@ -324,7 +344,7 @@ var dialog;
             footer.appendChild(button);
         });
 
-        appendTo(dialog.content, header, dialog.tabSelector, maintab, metatab, footer);
+        appendTo(dialog.content, header, dialog.progress, dialog.tabSelector, maintab, metatab, footer);
 
         dialog.overlay.appendChild(dialog.content);
         document.body.appendChild(dialog.overlay);

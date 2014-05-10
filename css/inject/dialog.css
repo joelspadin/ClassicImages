@@ -210,6 +210,60 @@
   -webkit-animation-timing-function: ease-in-out;
   animation-timing-function: ease-in-out;
 }
+#__ext_classic_images_content__ .__ext_classic_images_progress__ {
+  overflow: hidden;
+  position: relative;
+  margin-bottom: -6px;
+  height: 6px;
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+#__ext_classic_images_content__ .__ext_classic_images_progress__ span {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  opacity: 0;
+  background: #a7a7a7;
+  -webkit-animation: __ext_classic_images_progress__ 3s cubic-bezier(0, 0.6, 1, 0.4) infinite;
+  animation: __ext_classic_images_progress__ 3s cubic-bezier(0, 0.6, 1, 0.4) infinite;
+}
+#__ext_classic_images_content__ .__ext_classic_images_progress__ span:nth-of-type( 6) {
+  margin-left: -15px;
+  -webkit-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+}
+#__ext_classic_images_content__ .__ext_classic_images_progress__ span:nth-of-type( 5) {
+  margin-left: -9px;
+  -webkit-animation-delay: 0.24s;
+  animation-delay: 0.24s;
+}
+#__ext_classic_images_content__ .__ext_classic_images_progress__ span:nth-of-type( 4) {
+  margin-left: -3px;
+  -webkit-animation-delay: 0.18s;
+  animation-delay: 0.18s;
+}
+#__ext_classic_images_content__ .__ext_classic_images_progress__ span:nth-of-type( 3) {
+  margin-left: 3px;
+  -webkit-animation-delay: 0.12s;
+  animation-delay: 0.12s;
+}
+#__ext_classic_images_content__ .__ext_classic_images_progress__ span:nth-of-type( 2) {
+  margin-left: 9px;
+  -webkit-animation-delay: 0.06s;
+  animation-delay: 0.06s;
+}
+#__ext_classic_images_content__ .__ext_classic_images_progress__ span:nth-of-type( 1) {
+  margin-left: 15px;
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+}
+#__ext_classic_images_content__ .__ext_classic_images_progress__.__ext_classic_images_transparent__ {
+  opacity: 0;
+}
 @keyframes __ext_classic_images_pulse__ {
   0% {
     transform: scale(1);
@@ -252,6 +306,47 @@
   }
   100% {
     width: 1em;
+  }
+}
+@keyframes __ext_classic_images_progress__ {
+  0% {
+    left: 50%;
+    opacity: 1;
+  }
+  35% {
+    opacity: 0.5;
+  }
+  49% {
+    left: 100%;
+    opacity: 0.5;
+  }
+  51% {
+    left: 0;
+    opacity: 0.5;
+  }
+  100% {
+    left: 50%;
+    opacity: 1;
+  }
+}
+@-webkit-keyframes __ext_classic_images_progress__ {
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  80% {
+    left: 100%;
+    opacity: 0;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
   }
 }
 /*# sourceMappingURL=dialog.css.map */
