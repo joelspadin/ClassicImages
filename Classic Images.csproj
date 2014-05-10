@@ -71,6 +71,8 @@
     </Content>
     <Content Include="js\inject\filesize.js" />
     <Content Include="js\inject\cldr-plural.js" />
+    <None Include="js\lib\ExifReader LICENSE" />
+    <Content Include="js\lib\ExifReader.js" />
     <Content Include="_locales\en_US\messages.json" />
     <TypeScriptCompile Include="js\dynamic-inject.ts" />
     <TypeScriptCompile Include="js\inject\cldr-plural.d.ts" />
@@ -78,6 +80,7 @@
     <TypeScriptCompile Include="js\inject\keys.ts" />
     <TypeScriptCompile Include="js\interfaces.ts" />
     <TypeScriptCompile Include="js\inject\filesize.d.ts" />
+    <TypeScriptCompile Include="js\lib\ExifReader.d.ts" />
     <TypeScriptCompile Include="js\lib\libgif.d.ts" />
     <TypeScriptCompile Include="js\options.ts" />
     <Content Include="js\inject\keys.js">

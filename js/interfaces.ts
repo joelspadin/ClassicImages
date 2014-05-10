@@ -10,7 +10,7 @@
 	framerate?: number;
 	duration?: number;
 
-	metadata?: { [key: string]: string; };
+	metadata?: { [key: string]: { description: any; value: any; }; };
 }
 
 interface IMessage {

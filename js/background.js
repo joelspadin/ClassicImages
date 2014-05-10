@@ -154,10 +154,18 @@ var ImageProperties;
                     // Send the info we've collected up to now
                     callback(null, info);
 
-                    switch (info.type) {
-                        case 'GIF':
-                            GifParser.parse(fr.result, info, callback);
-                            break;
+                    try  {
+                        switch (info.type) {
+                            case 'GIF':
+                                GifParser.parse(fr.result, info, callback);
+                                break;
+
+                            case 'JPEG':
+                                JpegParser.parse(fr.result, info, callback);
+                                break;
+                        }
+                    } catch (e) {
+                        callback(chrome.i18n.getMessage('error_analyze_failed', [e.toString()]), null);
                     }
                 }
             });
@@ -313,6 +321,30 @@ var ImageProperties;
         }
         GifParser.parse = parse;
     })(GifParser || (GifParser = {}));
+
+    var JpegParser;
+    (function (JpegParser) {
+        function parse(buffer, info, callback) {
+            try  {
+                console.log('parsing exif');
+                var exif = new ExifReader();
+                exif.load(buffer);
+
+                info.metadata = exif.getAllTags();
+                console.log(info.metadata);
+
+                callback(null, info);
+            } catch (e) {
+                if (e instanceof Error && e.message === 'No Exif data') {
+                    // Image doesn't have exif data. Ignore.
+                    console.log('no exif data');
+                } else {
+                    throw e;
+                }
+            }
+        }
+        JpegParser.parse = parse;
+    })(JpegParser || (JpegParser = {}));
 })(ImageProperties || (ImageProperties = {}));
 
 var ImageSave;

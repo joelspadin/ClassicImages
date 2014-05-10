@@ -1,4 +1,4 @@
-/// <reference path="../lib/chrome.d.ts" />
+﻿/// <reference path="../lib/chrome.d.ts" />
 /// <reference path="../interfaces.ts" />
 /// <reference path="filesize.d.ts" />
 /// <reference path="cldr-plural.d.ts" />
@@ -100,6 +100,9 @@ var dialog;
 
     var OVERLAY_ID = '__ext_classic_images_overlay__';
     var CONTENT_ID = '__ext_classic_images_content__';
+    var TABS_ID = '__ext_classic_images_tabs__';
+    var EXIF_TAB_ID = '__ext_classic_images_metadata__';
+    var SELECTED_CLASS = '__ext_classic_images_selected_tab__';
     var PULSE_CLASS = '__ext_classic_images_pulse__';
     var TRANSPARENT_CLASS = '__ext_classic_images_transparent__';
     var HIDDEN_TEXT_CLASS = '__ext_classic_images_hidden_text__';
@@ -241,17 +244,24 @@ var dialog;
 
         // Rebuild metadata if available
         if (dialog.info.metadata) {
+            var keys = [];
             for (var key in dialog.info.metadata) {
                 if (info.metadata.hasOwnProperty(key)) {
-                    var dt = elem('dt', key);
-                    var dd = elem('dd', dialog.info.metadata[key]);
-
-                    // Insert some hidden characters to format nicely for copying
-                    insertHiddenCharacters(dt, dd);
-
-                    appendTo(dialog.tabs[1 /* Metadata */], dt, dd);
+                    keys.push(key);
                 }
             }
+
+            keys.sort();
+            keys.forEach(function (key) {
+                var data = dialog.info.metadata[key];
+                var dt = elem('dt', key);
+                var dd = elem('dd', formatExif(data));
+
+                // Insert some hidden characters to format nicely for copying
+                insertHiddenCharacters(dt, dd);
+
+                appendTo(dialog.tabs[1 /* Metadata */], dt, dd);
+            });
 
             showTabs(true);
         } else {
@@ -286,20 +296,20 @@ var dialog;
         var header = elem('header', localize('title_image_properties'));
 
         // Tab Header
-        dialog.tabSelector = elem('div');
+        dialog.tabSelector = elem('div', { id: TABS_ID });
         dialog.tabSelector.hidden = true;
 
         var mainTabSelector = elem('a', localize('tab_general'));
-        mainTabSelector.addEventListener('click', selectTab.bind(null, 0 /* Main */), false);
+        mainTabSelector.addEventListener('click', selectTab.bind(null, mainTabSelector, 0 /* Main */), false);
 
         var metaTabSelector = elem('a', localize('tab_metadata'));
-        metaTabSelector.addEventListener('click', selectTab.bind(null, 1 /* Metadata */), false);
+        metaTabSelector.addEventListener('click', selectTab.bind(null, metaTabSelector, 1 /* Metadata */), false);
 
         appendTo(dialog.tabSelector, mainTabSelector, metaTabSelector);
 
         // Tab content
         var maintab = elem('dl');
-        var metatab = elem('dl');
+        var metatab = elem('dl', { id: EXIF_TAB_ID });
         metatab.hidden = true;
 
         dialog.tabs[0 /* Main */] = maintab;
@@ -318,6 +328,8 @@ var dialog;
 
         dialog.overlay.appendChild(dialog.content);
         document.body.appendChild(dialog.overlay);
+
+        selectTab(mainTabSelector, 0 /* Main */);
     }
 
     function destroyDialog() {
@@ -364,7 +376,14 @@ var dialog;
         hiddenEmbeds = [];
     }
 
-    function selectTab(tab) {
+    function selectTab(button, tab) {
+        var buttons = dialog.tabSelector.childNodes;
+        for (var i = 0; i < buttons.length; i++) {
+            buttons[i].classList.remove(SELECTED_CLASS);
+        }
+
+        button.classList.add(SELECTED_CLASS);
+
         dialog.tabs[tab].hidden = false;
         dialog.tabs.forEach(function (element, i) {
             if (i !== tab) {
@@ -425,6 +444,42 @@ var dialog;
     function formatLargeNumber(n) {
         var sep = localize('thousands_separator');
         return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, sep);
+    }
+
+    function formatExif(data) {
+        var parts = [];
+
+        var addParts = function (obj) {
+            if (Array.isArray(obj)) {
+                parts = parts.concat(obj);
+            } else {
+                parts.push(obj);
+            }
+        };
+        var filter = function (part) {
+            return part !== null && part !== '' && part !== null && part !== undefined;
+        };
+        var toString = function (part) {
+            try  {
+                return part.toString();
+            } catch (e) {
+                return '';
+            }
+        };
+
+        addParts(data.description);
+        parts = parts.filter(filter);
+
+        if (parts.length === 0) {
+            addParts(data.value);
+            parts = parts.filter(filter);
+        }
+
+        if (parts.length === 0) {
+            return '';
+        } else {
+            return parts.map(toString).join(', ');
+        }
     }
 
     function insertHiddenCharacters(dt, dd) {

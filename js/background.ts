@@ -155,11 +155,19 @@ module ImageProperties {
 					// Send the info we've collected up to now
 					callback(null, info);
 
-					// Pick the right parser based on the image type
-					switch (info.type) {
-						case 'GIF':
-							GifParser.parse(fr.result, info, callback);
-							break;
+					try {
+						// Pick the right parser based on the image type
+						switch (info.type) {
+							case 'GIF':
+								GifParser.parse(fr.result, info, callback);
+								break;
+
+							case 'JPEG':
+								JpegParser.parse(fr.result, info, callback);
+								break;
+						}
+					} catch (e) {
+						callback(chrome.i18n.getMessage('error_analyze_failed', [e.toString()]), null);
 					}
 				}
 			});
@@ -319,6 +327,28 @@ module ImageProperties {
 			var stream = new BlobStream(buffer);
 			var handler = new Handler(info, callback);
 			parseGIF(stream, handler);
+		}
+	}
+
+	module JpegParser {
+		export function parse(buffer: ArrayBuffer, info: ImageInfo, callback: (err, info) => void) {
+			try {
+				console.log('parsing exif');
+				var exif = new ExifReader();
+				exif.load(buffer);
+				
+				info.metadata = exif.getAllTags();
+				console.log(info.metadata);
+				
+				callback(null, info);
+			} catch (e) {
+				if (e instanceof Error && (<Error>e).message === 'No Exif data') {
+					// Image doesn't have exif data. Ignore.
+					console.log('no exif data');
+				} else {
+					throw e;
+				}
+			}
 		}
 	}
 }

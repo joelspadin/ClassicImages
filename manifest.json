@@ -20,7 +20,8 @@
             "js/settings.js",
             "js/dynamic-inject.js",
             "js/background.js",
-            "js/lib/libgif.js"
+            "js/lib/libgif.js",
+            "js/lib/ExifReader.js"
         ],
         "persistent": false
     },

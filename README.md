@@ -3,6 +3,8 @@ Options page background image by [Subtle Patterns](http://subtlepatterns.com/use
 
 [CLDRPluralRuleParser](https://github.com/santhoshtr/CLDRPluralRuleParser) by Santhosh Thottingal
 
+[ExifReader](https://github.com/mattiasw/ExifReader) by Mattias Wallander
+
 [libgif.js](https://github.com/buzzfeed/libgif-js) by Shachaf Ben-Kiki and BuzzFeed
 
 ## Localization
