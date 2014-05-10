@@ -21,7 +21,7 @@
 @left: ~"__MSG_@@bidi_start_edge__";
 
 @normal-prop-width: __MSG_prop_header_width__;
-@exif-prop-width: 145px;
+@exif-prop-width: 160px;
 
 #__ext_classic_images_overlay__ {
 	position: fixed;
@@ -173,6 +173,10 @@
 		dd {
 			padding-left: 10px;
 			margin: 0 0 0.5rem @normal-prop-width;
+
+			a {
+				word-break: break-all;
+			}
 		}
 
 		dt:last-of-type,

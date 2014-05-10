@@ -20,12 +20,12 @@ function createConnection() {
                 break;
 
             case 'analysis-done':
-                dialog.doneAnalyzing();
+                analysis.end();
                 break;
 
             case 'analysis-error':
                 dialog.showLoadError(message.error);
-                dialog.doneAnalyzing();
+                analysis.end();
                 break;
         }
     });
@@ -44,8 +44,14 @@ window.addEventListener('keydown', function (e) {
 var analysis;
 (function (analysis) {
     var localize = chrome.i18n.getMessage;
+    var _port = null;
 
     function begin(url, port) {
+        if (_port !== null) {
+            analysis.end();
+        }
+
+        _port = port;
         dialog.show({ url: url });
 
         var xhr = new XMLHttpRequest();
@@ -91,6 +97,15 @@ var analysis;
         xhr.send();
     }
     analysis.begin = begin;
+
+    function end() {
+        if (_port !== null) {
+            _port.postMessage({ action: 'closed' });
+            _port = null;
+            dialog.doneAnalyzing();
+        }
+    }
+    analysis.end = end;
 })(analysis || (analysis = {}));
 
 var dialog;
@@ -184,6 +199,8 @@ var dialog;
                 closingTimeout = null;
                 destroyDialog();
             }, ANIMATION_LENGTH);
+
+            analysis.end();
         }
     }
     dialog.close = close;
@@ -218,7 +235,9 @@ var dialog;
     dialog.showLoadError = showLoadError;
 
     function doneAnalyzing() {
-        dialog.progress.classList.add(TRANSPARENT_CLASS);
+        if (dialog.progress) {
+            dialog.progress.classList.add(TRANSPARENT_CLASS);
+        }
     }
     dialog.doneAnalyzing = doneAnalyzing;
 
@@ -359,6 +378,7 @@ var dialog;
         document.body.removeChild(dialog.overlay);
         dialog.overlay = null;
         dialog.content = null;
+        dialog.progress = null;
         dialog.tabSelector = null;
         dialog.tabs = [];
         dialog.info = {};

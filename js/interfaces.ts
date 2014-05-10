@@ -13,6 +13,10 @@
 	metadata?: { [key: string]: { description: any; value: any; }; };
 }
 
+interface InfoCallback {
+	(err: string, info: ImageInfo): void;
+}
+
 interface IMessage {
 	action: string;
 }
@@ -34,4 +38,9 @@ interface ISaveMessage extends IMessage {
 	force?: boolean;
 	saveAs: boolean;
 	url: string;
+}
+
+interface IWorkerResponse {
+	action: string;
+	data?: ImageInfo;
 }

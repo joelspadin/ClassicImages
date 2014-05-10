@@ -1,14 +1,14 @@
 ﻿/// <reference path="settings.ts" />
 /// <reference path="dynamic-inject.ts" />
 /// <reference path="lib/chrome.d.ts" />
-/// <reference path="lib/libgif.d.ts" />
 function init() {
     var MESSAGE_HANDLERS = {
         'save-image': ImageSave.onSaveMessage
     };
 
     var CONNECTION_HANDLERS = {
-        'analyze-image': ImageProperties.onAnalyzeMessage
+        'analyze-image': ImageProperties.onAnalyzeMessage,
+        'closed': ImageProperties.terminateAnalysis
     };
 
     // Listen for context menu events
@@ -58,44 +58,45 @@ chrome.runtime.onInstalled.addListener(function (details) {
 
 var ImageProperties;
 (function (ImageProperties) {
-    var MIME_TYPES = {
-        'BMP': ['image/bmp', 'image/x-windows-bmp'],
-        'GIF': ['image/gif'],
-        'JPEG': ['image/jpeg', 'image/pjpeg'],
-        'ICO': ['image/x-icon'],
-        'PGM': ['image/x-portable-graymap'],
-        'PNG': ['image/png'],
-        'SVG': ['image/svg+xml', 'image/svg-xml'],
-        'TIFF': ['image/tiff', 'image/x-tiff'],
-        'WebP': ['image/webp'],
-        'XBM': ['image/x-xbitmap']
-    };
+    var currentWorker = null;
 
     function onAnalyzeMessage(message, port) {
-        // Fetch the image
-        var xhr = new XMLHttpRequest();
-        xhr.responseType = 'blob';
-        xhr.addEventListener('load', function (e) {
-            // Parse the image and pass back any new info we get
-            parseImage(xhr.response, function (err, info) {
-                if (err) {
-                    sendErrorResponse(err, port);
-                } else {
-                    sendInfoResponse(info, port);
-                }
-            });
+        if (currentWorker !== null) {
+            currentWorker.terminate();
+        }
+
+        getImageDimensions(message.url, function (err, width, height) {
+            if (err) {
+                postError(port, err);
+            } else {
+                postInfo(port, { width: width, height: height });
+            }
         });
 
-        xhr.addEventListener('error', function (e) {
-            sendErrorResponse(xhr.status + ' ' + xhr.statusText, port);
+        var worker = new Worker('js/analysis.js');
+        worker.postMessage(message);
+        worker.addEventListener('message', function (e) {
+            var message = e.data;
+            switch (message.action) {
+                case 'info':
+                    postInfo(port, message.data);
+                    break;
+
+                case 'done':
+                    postDone(port);
+                    break;
+
+                default:
+                    console.error('unknown message from worker', message);
+                    break;
+            }
         });
 
-        xhr.addEventListener('loadend', function (e) {
-            // Clean up the blob URL
-            URL.revokeObjectURL(message.url);
+        worker.addEventListener('error', function (e) {
+            postError(port, e.message);
         });
-        xhr.open('get', message.url, true);
-        xhr.send();
+
+        currentWorker = worker;
     }
     ImageProperties.onAnalyzeMessage = onAnalyzeMessage;
 
@@ -114,250 +115,47 @@ var ImageProperties;
     }
     ImageProperties.onContextMenuClicked = onContextMenuClicked;
 
-    function getGenericImageData(type, data, callback) {
+    function terminateAnalysis() {
+        if (currentWorker !== null) {
+            console.log('analysis cancelled');
+            currentWorker.terminate();
+            currentWorker = null;
+        }
+    }
+    ImageProperties.terminateAnalysis = terminateAnalysis;
+
+    function getImageDimensions(blobUrl, callback) {
         var image = new Image();
         image.addEventListener('load', function () {
-            callback(null, {
-                width: image.width,
-                height: image.height,
-                mimeType: type,
-                type: getImageType(type),
-                fileSize: data.byteLength
-            });
+            callback(null, image.width, image.height);
         });
 
         image.addEventListener('error', function (e) {
             callback(chrome.i18n.getMessage('error_analyze_failed', [e.error.toString()]), null);
         });
 
-        image.src = 'data:' + type + ';base64,' + toBase64(data);
+        image.src = blobUrl;
     }
 
-    function getImageType(mimeType) {
-        for (var key in MIME_TYPES) {
-            if (MIME_TYPES.hasOwnProperty(key)) {
-                if (MIME_TYPES[key].indexOf(mimeType.toLowerCase()) >= 0) {
-                    return key;
-                }
-            }
-        }
-        return null;
-    }
-
-    function parseImage(blob, callback) {
-        var fr = new FileReader();
-        fr.addEventListener('load', function (e) {
-            getGenericImageData(blob.type, fr.result, function (err, info) {
-                if (err) {
-                    callback(chrome.i18n.getMessage('error_analyze_failed', [err]), null);
-                } else {
-                    // Send the info we've collected up to now
-                    callback(null, info);
-
-                    try  {
-                        switch (info.type) {
-                            case 'GIF':
-                                GifParser.parse(fr.result, info, callback);
-                                break;
-
-                            case 'JPEG':
-                                JpegParser.parse(fr.result, info, callback);
-                                break;
-
-                            default:
-                                // No further analysis to do. Send back a 'null' to indicate we're done.
-                                callback(null, null);
-                                break;
-                        }
-                    } catch (e) {
-                        callback(chrome.i18n.getMessage('error_analyze_failed', [e.toString()]), null);
-                    }
-                }
-            });
+    function postDone(port) {
+        port.postMessage({
+            action: 'analysis-done'
         });
-
-        fr.addEventListener('error', function (e) {
-            callback(chrome.i18n.getMessage('error_analyze_failed', [fr.error.toString()]), null);
-        });
-
-        fr.readAsArrayBuffer(blob);
     }
 
-    function sendInfoResponse(info, port) {
-        if (info === null) {
-            port.postMessage({
-                action: 'analysis-done'
-            });
-        } else {
-            port.postMessage({
-                action: 'extend-properties',
-                data: info
-            });
-        }
-    }
-
-    function sendErrorResponse(error, port) {
+    function postError(port, error) {
         port.postMessage({
             action: 'analysis-error',
             error: error
         });
     }
 
-    // https://gist.github.com/jonleighton/958841
-    function toBase64(arrayBuffer) {
-        var base64 = '';
-        var encodings = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
-
-        var bytes = new Uint8Array(arrayBuffer);
-        var byteLength = bytes.byteLength;
-        var byteRemainder = byteLength % 3;
-        var mainLength = byteLength - byteRemainder;
-
-        var a, b, c, d;
-        var chunk;
-
-        for (var i = 0; i < mainLength; i = i + 3) {
-            // Combine the three bytes into a single integer
-            chunk = (bytes[i] << 16) | (bytes[i + 1] << 8) | bytes[i + 2];
-
-            // Use bitmasks to extract 6-bit segments from the triplet
-            a = (chunk & 16515072) >> 18;
-            b = (chunk & 258048) >> 12;
-            c = (chunk & 4032) >> 6;
-            d = chunk & 63;
-
-            // Convert the raw binary segments to the appropriate ASCII encoding
-            base64 += encodings[a] + encodings[b] + encodings[c] + encodings[d];
-        }
-
-        // Deal with the remaining bytes and padding
-        if (byteRemainder == 1) {
-            chunk = bytes[mainLength];
-
-            a = (chunk & 252) >> 2;
-
-            // Set the 4 least significant bits to zero
-            b = (chunk & 3) << 4;
-
-            base64 += encodings[a] + encodings[b] + '==';
-        } else if (byteRemainder == 2) {
-            chunk = (bytes[mainLength] << 8) | bytes[mainLength + 1];
-
-            a = (chunk & 64512) >> 10;
-            b = (chunk & 1008) >> 4;
-
-            // Set the 2 least significant bits to zero
-            c = (chunk & 15) << 2;
-
-            base64 += encodings[a] + encodings[b] + encodings[c] + '=';
-        }
-
-        return base64;
+    function postInfo(port, info) {
+        port.postMessage({
+            action: 'extend-properties',
+            data: info
+        });
     }
-
-    var GifParser;
-    (function (GifParser) {
-        /** Implementation of libgif's stream class for ArrayBuffer data*/
-        var BlobStream = (function () {
-            function BlobStream(buffer) {
-                this.data = new Uint8Array(buffer);
-                this.pos = 0;
-            }
-            BlobStream.prototype.read = function (length) {
-                var s = '';
-                for (var i = 0; i < length; i++) {
-                    s += String.fromCharCode(this.readByte());
-                }
-                return s;
-            };
-
-            BlobStream.prototype.readByte = function () {
-                if (this.pos >= this.data.length) {
-                    throw new Error('Attempted to read past end of stream.');
-                }
-                return this.data[this.pos++] & 0xFF;
-            };
-
-            BlobStream.prototype.readBytes = function (length) {
-                var bytes = [];
-                for (var i = 0; i < length; i++) {
-                    bytes.push(this.readByte());
-                }
-                return bytes;
-            };
-
-            BlobStream.prototype.readUnsigned = function () {
-                var a = this.readBytes(2);
-                return (a[1] << 8) + a[0];
-            };
-            return BlobStream;
-        })();
-
-        var Handler = (function () {
-            function Handler(info, callback) {
-                this.callback = callback;
-                this.animated = false;
-                this.info = info;
-
-                this.info.frames = 0;
-                this.info.framerate = 0;
-                this.info.duration = 0;
-            }
-            Handler.prototype.hdr = function (header) {
-                console.log('HEADER', header);
-            };
-
-            Handler.prototype.gce = function (block) {
-                this.info.frames += 1;
-                this.info.duration += block.delayTime / 100;
-            };
-
-            Handler.prototype.eof = function (block) {
-                if (this.info.duration > 0) {
-                    this.info.framerate = this.info.frames / this.info.duration;
-                } else {
-                    delete this.info.framerate;
-                    delete this.info.duration;
-                }
-
-                this.callback(null, this.info);
-                this.callback(null, null);
-            };
-            return Handler;
-        })();
-
-        function parse(buffer, info, callback) {
-            var stream = new BlobStream(buffer);
-            var handler = new Handler(info, callback);
-            parseGIF(stream, handler);
-        }
-        GifParser.parse = parse;
-    })(GifParser || (GifParser = {}));
-
-    var JpegParser;
-    (function (JpegParser) {
-        function parse(buffer, info, callback) {
-            try  {
-                console.log('parsing exif');
-                var exif = new ExifReader();
-                exif.load(buffer);
-
-                info.metadata = exif.getAllTags();
-                console.log(info.metadata);
-
-                callback(null, info);
-                callback(null, null);
-            } catch (e) {
-                if (e instanceof Error && e.message === 'No Exif data') {
-                    // Image doesn't have exif data. Ignore.
-                    callback(null, null);
-                } else {
-                    throw e;
-                }
-            }
-        }
-        JpegParser.parse = parse;
-    })(JpegParser || (JpegParser = {}));
 })(ImageProperties || (ImageProperties = {}));
 
 var ImageSave;

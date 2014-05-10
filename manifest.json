@@ -19,9 +19,7 @@
             "js/lib/storage.js",
             "js/settings.js",
             "js/dynamic-inject.js",
-            "js/background.js",
-            "js/lib/libgif.js",
-            "js/lib/ExifReader.js"
+            "js/background.js"
         ],
         "persistent": false
     },
