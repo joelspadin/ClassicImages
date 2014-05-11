@@ -154,12 +154,17 @@
 }
 #__ext_classic_images_content__ #__ext_classic_images_metadata__ dt {
   width: 160px;
-  margin: 0 0 0 -0.5rem;
+  margin: 0 -160px 0 -0.5rem;
   padding: 0.25rem 0 0.25rem 0.5rem;
 }
 #__ext_classic_images_content__ #__ext_classic_images_metadata__ dd {
   margin: 0 -0.5rem 0 160px;
   padding: 0.25rem 0.5rem 0.25rem 10px;
+}
+#__ext_classic_images_content__ #__ext_classic_images_metadata__ dt,
+#__ext_classic_images_content__ #__ext_classic_images_metadata__ dd {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 #__ext_classic_images_content__ #__ext_classic_images_metadata__ dt:nth-of-type(2n+1),
 #__ext_classic_images_content__ #__ext_classic_images_metadata__ dd:nth-of-type(2n+1) {

@@ -7,6 +7,8 @@ Options page background image by [Subtle Patterns](http://subtlepatterns.com/use
 
 [libgif.js](https://github.com/buzzfeed/libgif-js) by Shachaf Ben-Kiki and BuzzFeed
 
+[png.js](https://github.com/devongovett/png.js/) by Devon Govett
+
 ## Localization
 
 If you'd like to see this extension in another language:

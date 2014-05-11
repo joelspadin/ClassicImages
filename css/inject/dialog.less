@@ -165,9 +165,7 @@
 			clear: left;
 			float: left;
 			width: @normal-prop-width;
-			margin: 0 0 0.5rem;
-			overflow: hidden;
-			text-overflow: ellipsis;
+			margin: 0 -@normal-prop-width 0.5rem;
 		}
 
 		dd {
@@ -177,6 +175,11 @@
 			a {
 				word-break: break-all;
 			}
+		}
+
+		dt, dd {
+			overflow: hidden;
+			text-overflow: ellipsis;
 		}
 
 		dt:last-of-type,
@@ -214,7 +217,7 @@
 
 		dt {
 			width: @exif-prop-width;
-			margin: 0 0 0 -0.5rem;
+			margin: 0 -@exif-prop-width 0 -0.5rem;
 			padding: 0.25rem 0 0.25rem 0.5rem;
 		}
 

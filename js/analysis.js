@@ -1,4 +1,5 @@
 ﻿/// <reference path="interfaces.ts" />
+/// <reference path="lib/png.d.ts" />
 /// <reference path="lib/libgif.d.ts" />
 /// <reference path="lib/ExifReader.d.ts" />
 
@@ -82,18 +83,22 @@ function parseImage(blob, callback) {
                     JpegParser.parse(fr.result, info, callback);
                     break;
 
+                case 'PNG':
+                    PngParser.parse(fr.result, info, callback);
+                    break;
+
                 default:
                     // No further analysis to do. Send back a 'null' to indicate we're done.
                     callback(null, null);
                     break;
             }
         } catch (e) {
-            callback(chrome.i18n.getMessage('error_analyze_failed', [e.toString()]), null);
+            callback(e.toString(), null);
         }
     });
 
     fr.addEventListener('error', function (e) {
-        callback(chrome.i18n.getMessage('error_analyze_failed', [fr.error.toString()]), null);
+        callback(fr.error.toString(), null);
     });
 
     fr.readAsArrayBuffer(blob);
@@ -218,3 +223,43 @@ var JpegParser;
     }
     JpegParser.parse = parse;
 })(JpegParser || (JpegParser = {}));
+
+var PngParser;
+(function (PngParser) {
+    function parse(buffer, info, callback) {
+        importScripts('lib/zlib.js');
+        importScripts('lib/png.js');
+
+        var info = {};
+        var data = new Uint8Array(buffer);
+        var png = new PNG(data);
+
+        info.bitDepth = png.pixelBitlength;
+
+        if (png.animation) {
+            info.frames = png.animation.numFrames;
+
+            var duration = 0;
+            png.animation.frames.forEach(function (frame) {
+                duration += frame.delay;
+            });
+
+            info.duration = duration / 1000;
+            info.framerate = info.frames / info.duration;
+        }
+
+        for (var key in png.text) {
+            if (png.text.hasOwnProperty(key)) {
+                info.metadata = info.metadata || {};
+                info.metadata[key] = {
+                    description: png.text[key],
+                    value: null
+                };
+            }
+        }
+
+        callback(null, info);
+        callback(null, null);
+    }
+    PngParser.parse = parse;
+})(PngParser || (PngParser = {}));

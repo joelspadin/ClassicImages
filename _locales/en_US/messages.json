@@ -59,6 +59,10 @@
         "message": "Restricted domains (enter one per line)",
         "description": "Title for the text field where a user may enter a list of domains to which the download workaround should be applied"
     },
+    "title_credits": {
+        "message": "Credits",
+        "description": "Title for the options page: credits section"
+    },
 
     "info_if_downloads_fail": {
         "message": "The <code>Save as...</code> action uses an extension API which sometimes fails on sites which prevent hotlinking. If a download fails with the error, <strong>Interrupted: Server Problem</strong>, add the site to the list below. This enables a workaround which usually fixes the problem, but the save dialog and download progress will not appear until the image is fully downloaded.",
@@ -120,8 +124,8 @@
         "description": "Tab title for the image properties pop-up. Refers to info used by all image types."
     },
     "tab_metadata": {
-        "message": "Exif data",
-        "description": "Tab title for the image properties pop-up. Refers to Exif data embedded within an image."
+        "message": "Metadata",
+        "description": "Tab title for the image properties pop-up. Refers to data embedded within an image, such as Exif data."
     },
     "prop_header_width": {
         "message": "80px",

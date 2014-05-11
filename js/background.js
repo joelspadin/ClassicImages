@@ -93,7 +93,8 @@ var ImageProperties;
         });
 
         worker.addEventListener('error', function (e) {
-            postError(port, e.message);
+            var error = chrome.i18n.getMessage('error_analyze_failed', [e.message]);
+            postError(port, error);
         });
 
         currentWorker = worker;
