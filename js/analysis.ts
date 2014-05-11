@@ -210,12 +210,18 @@ module JpegParser {
 	export function parse(buffer: ArrayBuffer, info: ImageInfo, callback: (err, info) => void) {
 		importScripts('lib/ExifReader.js');
 		try {
-			console.log('parsing exif');
 			var exif = new ExifReader();
 			exif.load(buffer);
 
-			info.metadata = exif.getAllTags();
-			console.log(info.metadata);
+			var metadata = exif.getAllTags();
+
+			// Check that the metadata actually contains data
+			for (var key in metadata) {
+				if (metadata.hasOwnProperty(key)) {
+					info.metadata = metadata;
+					break;
+				}
+			}
 
 			callback(null, info);
 			callback(null, null);
