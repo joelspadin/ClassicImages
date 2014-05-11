@@ -154,6 +154,10 @@ module GifParser {
 			var a = this.readBytes(2);
 			return (a[1] << 8) + a[0];
 		}
+
+		public skip(length: number): void {
+			this.pos += length;
+		}
 	}
 
 	class Handler implements GifParseHandler {

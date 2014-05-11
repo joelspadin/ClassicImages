@@ -148,6 +148,10 @@ var GifParser;
             var a = this.readBytes(2);
             return (a[1] << 8) + a[0];
         };
+
+        BlobStream.prototype.skip = function (length) {
+            this.pos += length;
+        };
         return BlobStream;
     })();
 

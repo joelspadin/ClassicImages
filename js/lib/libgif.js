@@ -107,6 +107,14 @@ var parseGIF = function (st, handler) {
 		return data;
 	};
 
+	var skipSubBlocks = function () {
+		var size;
+		do {
+			size = st.readByte();
+			st.skip(size)
+		} while (size !== 0);
+	}
+
 	var parseHeader = function () {
 		var hdr = {};
 		hdr.sig = st.read(3);
@@ -155,9 +163,8 @@ var parseGIF = function (st, handler) {
 		var parsePTExt = function (block) {
 			// No one *ever* uses this. If you use it, deal with parsing it yourself.
 			var blockSize = st.readByte(); // Always 12
-			block.ptHeader = st.readBytes(12);
-			block.ptData = readSubBlocks();
-			handler.pte && handler.pte(block);
+			st.skip(12);
+			skipSubBlocks();
 		};
 
 		var parseAppExt = function (block) {
@@ -170,9 +177,7 @@ var parseGIF = function (st, handler) {
 			};
 
 			var parseUnknownAppExt = function (block) {
-				block.appData = readSubBlocks();
-				// FIXME: This won't work if a handler wants to match on any identifier.
-				handler.app && handler.app[block.identifier] && handler.app[block.identifier](block);
+				skipSubBlocks();
 			};
 
 			var blockSize = st.readByte(); // Always 11
@@ -189,8 +194,7 @@ var parseGIF = function (st, handler) {
 		};
 
 		var parseUnknownExt = function (block) {
-			block.data = readSubBlocks();
-			handler.unknown && handler.unknown(block);
+			skipSubBlocks();
 		};
 
 		block.label = st.readByte();
@@ -262,13 +266,9 @@ var parseGIF = function (st, handler) {
 
 		img.lzwMinCodeSize = st.readByte();
 
-		var lzwData = readSubBlocks();
+		skipSubBlocks();
 
-		img.pixels = lzwDecode(img.lzwMinCodeSize, lzwData);
-
-		if (img.interlaced) { // Move
-			img.pixels = deinterlace(img.pixels, img.width);
-		}
+		img.pixels = null;
 
 		handler.img && handler.img(img);
 	};
