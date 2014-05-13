@@ -1,4 +1,4 @@
-Rozszerzenie "Klasyczne obrazki" przywraca niektóre funckje obsługi obrazków, które zniknęły z Opery 15+, a były w Operze 12.
+Rozszerzenie "Klasyczne obrazki" przywraca kilka funkcji dotyczących obsługi obrazków, które zniknęły z Opery 15+, a były w Operze 12.
 
 Obecne funkcje:
 - Alt+Ctrl+Click umożliwia zapisywanie obrazków (skróty klawiszowe są konfigurowalne. Opera 20+ wymaga użycia okna dialogowego "Zapisz jako".)
