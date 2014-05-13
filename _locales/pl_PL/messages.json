@@ -59,6 +59,10 @@
         "message": "Domeny z ograniczeniami (wprowadź jedną na linię)",
         "description": "Title for the text field where a user may enter a list of domains to which the download workaround should be applied"
     },
+    "title_credits": {
+        "message": "Twórcy",
+        "description": "Title for the options page: credits section"
+    },
 
     "info_if_downloads_fail": {
         "message": "Akcja <code>Zapisz jako...</code> używa interfejsu rozszerzeń API, który czasami nie powiedzie się na stronach, które blokują hotlinkowanie. Jeśli pobieranie nie powiedzie się z błędem, <strong>Przerwano: Problem z serwerem</strong>, dodaj stronę do listy poniżej. To umożliwia obejście, które zazwyczaj rozwiązuje problem, ale okienko z zapisem i postęp pobierania się nie pokażą dopóki obrazek nie pobierze się w całości.",
@@ -99,7 +103,7 @@
         "description": "Option which saves images directly to the downloads folder"
     },
     "browser_default": {
-        "message": "Domyślna przeglądarka",
+        "message": "Domyślna przeglądarki",
         "description": "Option which leaves the browser behavior unchanged"
     },
     "zero_or_more_chars": {
@@ -120,8 +124,8 @@
         "description": "Tab title for the image properties pop-up. Refers to info used by all image types."
     },
     "tab_metadata": {
-        "message": "Dane Exif",
-        "description": "Tab title for the image properties pop-up. Refers to Exif data embedded within an image."
+        "message": "Metadane",
+        "description": "Tab title for the image properties pop-up. Refers to data embedded within an image, such as Exif data."
     },
     "prop_header_width": {
         "message": "80px",
