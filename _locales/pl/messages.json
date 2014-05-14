@@ -76,7 +76,7 @@
         "description": "Description for the image download workaround"
     },
     "info_special_patterns": {
-        "message": "Nastpęujące wzory specjalne mogą być stosowane",
+        "message": "Następujące wzory specjalne mogą być stosowane",
         "description": "Precedes a listing of special codes that may be used for the image download workaround"
     },
 
@@ -98,7 +98,7 @@
         "description": "The Shift key on a keyboard"
     },
     "click": {
-        "message": "Klik",
+        "message": "LPM",
         "description": "Action performed when pressing a mouse button"
     },
     "save_as": {
