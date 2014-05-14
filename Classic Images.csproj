@@ -74,6 +74,8 @@
     <Content Include="js\inject\cldr-plural.js" />
     <None Include="js\lib\ExifReader LICENSE" />
     <Content Include="js\lib\ExifReader.js" />
+    <Content Include="js\lib\png.js" />
+    <Content Include="js\lib\zlib.js" />
     <Content Include="README.html">
       <DependentUpon>README.md</DependentUpon>
     </Content>
@@ -90,6 +92,7 @@
     <TypeScriptCompile Include="js\inject\filesize.d.ts" />
     <TypeScriptCompile Include="js\lib\ExifReader.d.ts" />
     <TypeScriptCompile Include="js\lib\libgif.d.ts" />
+    <TypeScriptCompile Include="js\lib\png.d.ts" />
     <TypeScriptCompile Include="js\options.ts" />
     <Content Include="js\inject\keys.js">
       <DependentUpon>keys.ts</DependentUpon>

@@ -9,6 +9,8 @@ Options page background image by [Subtle Patterns](http://subtlepatterns.com/use
 
 [png.js](https://github.com/devongovett/png.js/) by Devon Govett
 
+Polish localization by [Piotr Karol Marek Żółtowski](https://github.com/Piter432)
+
 ## Localization
 
 If you'd like to see this extension in another language:
