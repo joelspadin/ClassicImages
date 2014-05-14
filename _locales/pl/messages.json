@@ -5,7 +5,14 @@
     "extension_desc": {
         "message": "Przywraca funkcje obrazków z Opery 12"
     },
-
+    
+    "__MSG_extension_name__": {
+        "message": "Klasyczne obrazki"
+    },
+    "__MSG_extension_desc__": {
+        "message": "Przywraca funkcje obrazków z Opery 12"
+    },
+    
     "plural_rule_zero": {
         "message": "",
         "description": "CLDR plural rules. Copy the rules for your language from https://github.com/santhoshtr/CLDRPluralRuleParser/blob/master/data/plurals.json. If your language does not use a plural group, use an empty string."
