@@ -51,7 +51,7 @@
         "description": "Tab title for the options page"
     },
     "title_image_properties": {
-        "message": "Właściwości",
+        "message": "Właściwości obrazka",
         "description": "Title of the the image properties pop-up"
     },
     "title_image_actions": {
