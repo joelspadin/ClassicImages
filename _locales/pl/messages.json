@@ -5,7 +5,14 @@
     "extension_desc": {
         "message": "Przywraca funkcje obrazków z Opery 12"
     },
-
+    
+    "__MSG_extension_name__": {
+        "message": "Klasyczne obrazki"
+    },
+    "__MSG_extension_desc__": {
+        "message": "Przywraca funkcje obrazków z Opery 12"
+    },
+    
     "plural_rule_zero": {
         "message": "",
         "description": "CLDR plural rules. Copy the rules for your language from https://github.com/santhoshtr/CLDRPluralRuleParser/blob/master/data/plurals.json. If your language does not use a plural group, use an empty string."
@@ -44,7 +51,7 @@
         "description": "Tab title for the options page"
     },
     "title_image_properties": {
-        "message": "Właściwości",
+        "message": "Właściwości obrazka",
         "description": "Title of the the image properties pop-up"
     },
     "title_image_actions": {
@@ -69,7 +76,7 @@
         "description": "Description for the image download workaround"
     },
     "info_special_patterns": {
-        "message": "Nastpęujące wzory specjalne mogą być stosowane",
+        "message": "Następujące wzory specjalne mogą być stosowane",
         "description": "Precedes a listing of special codes that may be used for the image download workaround"
     },
 
@@ -91,7 +98,7 @@
         "description": "The Shift key on a keyboard"
     },
     "click": {
-        "message": "Klik",
+        "message": "LPM",
         "description": "Action performed when pressing a mouse button"
     },
     "save_as": {
