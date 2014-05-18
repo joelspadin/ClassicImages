@@ -60,6 +60,7 @@
   </PropertyGroup>
   <Import Project="$(VSToolsPath)\TypeScript\Microsoft.TypeScript.targets" />
   <ItemGroup>
+    <Content Include=".gitignore" />
     <Content Include="build.py" />
     <Content Include="css\inject\dialog.css">
       <DependentUpon>dialog.less</DependentUpon>
@@ -72,6 +73,7 @@
     </Content>
     <Content Include="js\inject\filesize.js" />
     <Content Include="js\inject\cldr-plural.js" />
+    <Content Include="_locales\pl\description.txt" />
     <None Include="js\lib\ExifReader LICENSE" />
     <Content Include="js\lib\ExifReader.js" />
     <Content Include="js\lib\png.js" />
@@ -83,6 +85,7 @@
     <Content Include="_locales\en_US\messages.json" />
     <Content Include="LICENSE" />
     <Content Include="README.md" />
+    <Content Include="_locales\pl\messages.json" />
     <TypeScriptCompile Include="js\analysis.ts" />
     <TypeScriptCompile Include="js\dynamic-inject.ts" />
     <TypeScriptCompile Include="js\inject\cldr-plural.d.ts" />
