@@ -215,7 +215,7 @@
         "description": "Header for the image animation data"
     },
     "val_animation_duration": {
-        "message": "$frame_count$ $frames$ w $duration$ $seconds$ ($framerate$ klatek na sekundę)",
+        "message": "$frame_count$ $frames$ w $duration$ $seconds$ ($framerate$ klatek/ka na sekundę)",
         "description": "Value for the image animation data with duration",
         "placeholders": {
             "frame_count": {
@@ -255,11 +255,11 @@
         }
     },
     "cnt_frames": {
-        "message": "ramka;ramek",
+        "message": "ramka;ramek/ki",
         "description": "Number of frames in an animation. List CLDR plural forms in order zero;one;two;few;many;other. Omit plural forms not used by your language."
     },
     "cnt_seconds": {
-        "message": "sekunda;sekundy",
+        "message": "sekundzie;sekundy",
         "description": "Unit of time. List CLDR plural forms in order zero;one;two;few;many;other. Omit plural forms not used by your language."
     },
     "prop_address": {
