@@ -161,7 +161,7 @@
         "description": "Header for the image bit depth"
     },
     "val_bitdepth": {
-        "message": "$bits$ bitów na piksel",
+        "message": "$bits$ bity/ów na piksel",
         "description": "Value for the image bit depth",
         "placeholders": {
             "bits": {
@@ -171,7 +171,7 @@
         }
     },
     "prop_imagetype": {
-        "message": "Tyb obrazka",
+        "message": "Typ obrazka",
         "description": "Header for the image format"
     },
     "val_imagetype": {
@@ -197,7 +197,7 @@
         "description": "Header for the image file size"
     },
     "val_filesize": {
-        "message": "$humansize$ ($bytesize$ bitów)",
+        "message": "$humansize$ ($bytesize$ bajty/ów)",
         "description": "Value for the image file size",
         "placeholders": {
             "humansize": {
@@ -215,7 +215,7 @@
         "description": "Header for the image animation data"
     },
     "val_animation_duration": {
-        "message": "$frame_count$ $frames$ w $duration$ $seconds$ ($framerate$ FPS-ów)",
+        "message": "$frame_count$ $frames$ w $duration$ $seconds$ ($framerate$ klatek na sekundę)",
         "description": "Value for the image animation data with duration",
         "placeholders": {
             "frame_count": {
