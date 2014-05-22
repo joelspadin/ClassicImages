@@ -43,11 +43,11 @@
     },
 
     "ctx_image_properties": {
-        "message": "Właściwości obrazka...",
+        "message": "Właściwości obrazka",
         "description": "Text for the context menu item"
     },
     "title_options_page_tab": {
-        "message": "Ustawienia 'Klasycznych obrazków'",
+        "message": "Ustawienia \"Klasycznych obrazków\"",
         "description": "Tab title for the options page"
     },
     "title_image_properties": {
