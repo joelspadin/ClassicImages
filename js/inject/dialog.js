@@ -1,4 +1,4 @@
-﻿/// <reference path="../lib/chrome.d.ts" />
+/// <reference path="../lib/chrome.d.ts" />
 /// <reference path="../interfaces.ts" />
 /// <reference path="filesize.d.ts" />
 /// <reference path="cldr-plural.d.ts" />

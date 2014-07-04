@@ -97,14 +97,8 @@
     <TypeScriptCompile Include="js\lib\libgif.d.ts" />
     <TypeScriptCompile Include="js\lib\png.d.ts" />
     <TypeScriptCompile Include="js\options.ts" />
-    <Content Include="js\inject\keys.js">
-      <DependentUpon>keys.ts</DependentUpon>
-    </Content>
     <None Include="js\lib\libgif-js LICENSE" />
     <Content Include="js\lib\libgif.js" />
-    <Content Include="js\options.js">
-      <DependentUpon>options.ts</DependentUpon>
-    </Content>
     <Content Include="manifest.json" />
     <Content Include="options-page.html" />
     <Content Include="css\background.css" />
@@ -116,22 +110,10 @@
     <Content Include="img\icon-48.png" />
     <Content Include="img\pattern\use_your_illusion.png" />
     <Content Include="img\pattern\use_your_illusion_@2X.png" />
-    <Content Include="js\background.js">
-      <DependentUpon>background.ts</DependentUpon>
-    </Content>
     <TypeScriptCompile Include="js\background.ts" />
-    <Content Include="js\settings.js">
-      <DependentUpon>settings.ts</DependentUpon>
-    </Content>
     <TypeScriptCompile Include="js\settings.ts" />
     <Content Include="js\lib\chrome.d.ts" />
-    <Content Include="js\lib\options-page.js">
-      <DependentUpon>options-page.ts</DependentUpon>
-    </Content>
     <TypeScriptCompile Include="js\lib\options-page.ts" />
-    <Content Include="js\lib\storage.js">
-      <DependentUpon>storage.ts</DependentUpon>
-    </Content>
     <TypeScriptCompile Include="js\lib\storage.ts" />
   </ItemGroup>
   <ItemGroup>

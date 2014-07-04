@@ -55,7 +55,6 @@ chrome.runtime.onInstalled.addListener(function (details) {
         contexts: ['image']
     });
 });
-
 var ImageProperties;
 (function (ImageProperties) {
     var currentWorker = null;

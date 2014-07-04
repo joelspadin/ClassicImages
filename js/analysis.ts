@@ -3,22 +3,20 @@
 /// <reference path="lib/libgif.d.ts" />
 /// <reference path="lib/ExifReader.d.ts" />
 
-declare function postMessage(message: any): void;
-
 var MIME_TYPES: { [key: string]: string[]; } = {
-	'BMP':  ['image/bmp', 'image/x-windows-bmp'],
-	'GIF':  ['image/gif'],
+	'BMP': ['image/bmp', 'image/x-windows-bmp'],
+	'GIF': ['image/gif'],
 	'JPEG': ['image/jpeg', 'image/pjpeg'],
-	'ICO':  ['image/x-icon'],
-	'PGM':  ['image/x-portable-graymap'],
-	'PNG':  ['image/png'],
-	'SVG':  ['image/svg+xml', 'image/svg-xml'],
+	'ICO': ['image/x-icon'],
+	'PGM': ['image/x-portable-graymap'],
+	'PNG': ['image/png'],
+	'SVG': ['image/svg+xml', 'image/svg-xml'],
 	'TIFF': ['image/tiff', 'image/x-tiff'],
 	'WebP': ['image/webp'],
-	'XBM':  ['image/x-xbitmap'],
+	'XBM': ['image/x-xbitmap'],
 }
 
-onmessage = function(event) {
+onmessage = function (event) {
 	var message = <IAnalyzeMessage>event.data;
 
 	var xhr = new XMLHttpRequest();
@@ -108,14 +106,14 @@ function parseImage(blob: Blob, callback: InfoCallback) {
 }
 
 function endAnalysis() {
-	postMessage({
+	(<any>postMessage)({
 		action: 'done'
 	});
 	close();
 }
 
 function sendInfo(info: ImageInfo) {
-	postMessage({
+	(<any>postMessage)({
 		action: 'info',
 		data: info
 	});
