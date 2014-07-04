@@ -21,7 +21,7 @@ INCLUDES = [
     'img/**/*.png',
     'img/**/*.svg',
     'js/**/*.js',
-	'**/*LICENSE',
+    '**/*LICENSE',
     'manifest.json',
     'LICENSE',
     'README.md',
@@ -33,14 +33,13 @@ IGNORE_TYPES = [
     '.min.js',
 ]
 
-
 def build_package():
     """ Copies all the included files to the build directory """
     # Erase and rebuild the build directory
     if os.path.exists(BUILD_DIR):
         shutil.rmtree(BUILD_DIR)
 
-    os.mkdir(BUILD_DIR)
+    mkdir(BUILD_DIR)
 
     for include in INCLUDES:
         # Glob all the files!
@@ -55,7 +54,7 @@ def build_package():
             newdir = os.path.dirname(newfile)
 
             if not os.path.exists(newdir):
-                safe_mkdir(newdir)
+                mkdir(newdir)
 
             shutil.copy(file, newfile)
 
@@ -124,6 +123,16 @@ def package_extension(path, key):
     key = os.path.abspath(key)
 
     subprocess.check_output([find_build_executable(), '--pack-extension={0}'.format(path), '--pack-extension-key={0}'.format(key)])
+
+def mkdir(dir, max_retries=10):
+    """ Makes dir, retrying if it failed due to a permission error """
+    try:
+        safe_mkdir(dir)
+    except PermissionError:
+        if max_retries > 0:
+            mkdir(dir, max_retries - 1)
+        else:
+            raise
 
 def safe_mkdir(dir):
     """ Makes dir and any missing parent directories """
