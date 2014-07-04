@@ -40,21 +40,33 @@ function init() {
 
     inject.init("js/inject/dialog.js", "js/inject/filesize.js", "js/inject/cldr-plural.js");
 }
-;
 
-chrome.runtime.onInstalled.addListener(function (details) {
+// Because Opera doesn't seem to fire runtime.onInstalled or runtime.onStartup
+// when the browser starts any more, this will re-register the context menu
+// each and every time the extension gets loaded. I shouldn't have to do this,
+// but at least this fixes the issue where the context menu doesn't appear
+// until you reload the extension.
+function stupidWorkaroundToCreateContextMenus() {
     var CONTEXT_ID = 'image-properties';
 
-    settings.init();
-    ImageSave.rebuildActions();
-    inject.clearInjectedTabs();
-
+    chrome.contextMenus.removeAll();
     chrome.contextMenus.create({
         id: CONTEXT_ID,
         title: chrome.i18n.getMessage('ctx_image_properties'),
         contexts: ['image']
     });
+}
+
+chrome.runtime.onInstalled.addListener(function (details) {
+    settings.init();
+    ImageSave.rebuildActions();
+    inject.clearInjectedTabs();
+
+    stupidWorkaroundToCreateContextMenus();
 });
+
+stupidWorkaroundToCreateContextMenus();
+
 var ImageProperties;
 (function (ImageProperties) {
     var currentWorker = null;
