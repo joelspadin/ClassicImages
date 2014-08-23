@@ -1,0 +1,7 @@
+﻿A Classic Images visszahoz néhány olyan képekhez kapcsolódó funkciót, amik elvesztek az Opera 12 és 15 közötti váltás során.
+
+Jelenlegi funkciók:
+- Alt+Ctrl+Kattintásra a képek mentése (A billentyűkombináció állítható. Az Opera 20-as vagy újabb verziója a "Mentés másként" párbeszédablakot használja.)
+- Kép tulajdonságai felugró ablak
+
+Írj nekem, ha más funkciókat is szeretnél viszont látni!
