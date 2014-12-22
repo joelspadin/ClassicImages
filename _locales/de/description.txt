@@ -1,0 +1,7 @@
+﻿Classic Images bringt einige Bildfunktionen zurück, die beim Übergang von Opera 12 nach 15 verloren gingen.
+
+Aktuelle Funktionen:
+- Alt + Strg + Klick zum Speichern von Bildern (Die Tastenkürzel sind konfigurierbar. Für das "Speichern unter..."-Fenster wird Opera 20 (oder neuer) benötigt.)
+- Bildeigenschaften Pop-up
+
+Bitte melden, wenn irgendwelche anderen Bildfunktionen benötigt werden. Ich versuche diese dann einzubauen.
