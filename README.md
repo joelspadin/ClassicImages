@@ -9,7 +9,11 @@ Options page background image by [Subtle Patterns](http://subtlepatterns.com/use
 
 [png.js](https://github.com/devongovett/png.js/) by Devon Govett
 
+German localization by [rabe85](https://github.com/rabe85)
+
 Polish localization by [Piotr Karol Marek Żółtowski](https://github.com/Piter432)
+
+Serbian localization by [Sijera](https://github.com/Sijera)
 
 ## Localization
 
