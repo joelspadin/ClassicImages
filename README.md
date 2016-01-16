@@ -11,6 +11,8 @@ Options page background image by [Subtle Patterns](http://subtlepatterns.com/use
 
 German localization by [rabe85](https://github.com/rabe85)
 
+Hungarian localization by [Tóth Róbert](https://github.com/Nekomajin42)
+
 Polish localization by [Piotr Karol Marek Żółtowski](https://github.com/Piter432)
 
 Serbian localization by [Sijera](https://github.com/Sijera)
@@ -20,7 +22,7 @@ Serbian localization by [Sijera](https://github.com/Sijera)
 If you'd like to see this extension in another language:
 
 1. Clone this repo.
-2. Make a copy of `_locales/en_US`.
+2. Make a copy of `_locales/en`.
 3. Rename the folder to match the language code of your new language.
 4. Translate `messages.json`.
 5. Translate `description.txt` (this goes on Opera's add-ons site)

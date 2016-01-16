@@ -1,0 +1,23 @@
+﻿[
+  {
+    "outputFile": "css/options-custom.css",
+    "inputFile": "css/options-custom.less",
+    "options": {
+      "sourceMap": true
+    }
+  },
+  {
+    "outputFile": "css/options.css",
+    "inputFile": "css/options.less",
+    "options": {
+      "sourceMap": true
+    }
+  },
+  {
+    "outputFile": "css/inject/dialog.css",
+    "inputFile": "css/inject/dialog.less",
+    "options": {
+      "sourceMap": true
+    }
+  }
+]

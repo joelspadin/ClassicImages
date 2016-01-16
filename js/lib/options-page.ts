@@ -81,7 +81,7 @@ class OptionsPage {
 	/** Gets whether an element is a multi-select input */
 	static isMultiSelect(element: HTMLElement) {
 		if (element instanceof HTMLSelectElement) {
-			return (OptionsPage.MultiSelectTypes.indexOf((<HTMLInputElement>element).type.toLowerCase()) >= 0);
+			return (OptionsPage.MultiSelectTypes.indexOf(element.type.toLowerCase()) >= 0);
 		} else {
 			return false;
 		}

@@ -1,6 +1,7 @@
 ; Visual Studio directories
 /bin/
 /obj/
+.vs
 
 ; Visual Studio files
 *.suo
@@ -9,11 +10,24 @@
 ; Generated files
 __pycache__
 *.crx
+*.css
 *.map
 *.min.css
 *.min.html
 *.nex
 *.pyc
+*.js
 
 /build/
 README.html
+
+; Non-LESS stylesheets
+background.css
+
+; 3rd party JavaScript libraries
+!cldr-plural.js
+!filesize.js
+!ExifReader.js
+!libgif.js
+!png.js
+!zlib.js

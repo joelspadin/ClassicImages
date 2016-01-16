@@ -82,7 +82,8 @@ window.addEventListener('click', (e) => {
 		return;
 	}
 
-	if ((<Element>e.target).nodeName === 'IMG') {
+	var node = <Element>e.target;
+	if (node.nodeName === 'IMG' || node.nodeName === 'VIDEO') {
 		var keymask = 0;
 		if (e.altKey) {
 			keymask |= ALT;
@@ -105,16 +106,21 @@ window.addEventListener('click', (e) => {
 			e.preventDefault();
 			e.stopImmediatePropagation();
 
+			var getSource: { [key: string]: (e: Element) => string; } = {
+				'IMG': (e: HTMLImageElement) => e.src,
+				'VIDEO': (e: HTMLVideoElement) => e.currentSrc,
+			};
+
 			if (actions[keymask] !== SAVEAS) {
 				var a = document.createElement('a');
-				a.href = (<HTMLImageElement>e.target).src;
+				a.href = getSource[node.nodeName](node);
 				a.target = '_blank';
 				a.download = a.href.substring(a.href.lastIndexOf('/') + 1);
 				a.click();
 			} else {
 				chrome.runtime.sendMessage({
 					action: 'save-image',
-					url: (<HTMLImageElement>e.target).src,
+					url: getSource[node.nodeName](node),
 					saveAs: true,
 				});
 			}

@@ -14,6 +14,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -73,7 +74,11 @@
     </Content>
     <Content Include="js\inject\filesize.js" />
     <Content Include="js\inject\cldr-plural.js" />
+    <Content Include="_locales\de\description.txt" />
+    <Content Include="_locales\en\description.txt" />
+    <Content Include="_locales\hu\description.txt" />
     <Content Include="_locales\pl\description.txt" />
+    <Content Include="_locales\sr\description.txt" />
     <None Include="js\lib\ExifReader LICENSE" />
     <Content Include="js\lib\ExifReader.js" />
     <Content Include="js\lib\png.js" />
@@ -81,11 +86,13 @@
     <Content Include="README.html">
       <DependentUpon>README.md</DependentUpon>
     </Content>
-    <Content Include="_locales\en_US\description.txt" />
-    <Content Include="_locales\en_US\messages.json" />
     <Content Include="LICENSE" />
     <Content Include="README.md" />
     <Content Include="_locales\pl\messages.json" />
+    <Content Include="_locales\en\messages.json" />
+    <Content Include="_locales\de\messages.json" />
+    <Content Include="_locales\hu\messages.json" />
+    <Content Include="_locales\sr\messages.json" />
     <TypeScriptCompile Include="js\analysis.ts" />
     <TypeScriptCompile Include="js\dynamic-inject.ts" />
     <TypeScriptCompile Include="js\inject\cldr-plural.d.ts" />
