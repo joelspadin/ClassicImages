@@ -1,4 +1,5 @@
 ﻿interface ImageInfo {
+	element?: HTMLImageElement;
 	url?: string;
 	type?: string;
 	mimeType?: string;

@@ -1,7 +1,6 @@
-/// <reference path="../lib/chrome.d.ts" />
-/// <reference path="../interfaces.ts" />
-/// <reference path="filesize.d.ts" />
-/// <reference path="cldr-plural.d.ts" />
+interface HTMLSourceElement {
+	srcset: string;
+}
 
 chrome.runtime.onMessage.addListener((message: IDialogMessage) => {
 	switch (message.action) {
@@ -52,7 +51,11 @@ module analysis {
 		}
 
 		_port = port;
-		dialog.show({ url: url });
+
+		dialog.show({
+			url: url,
+			element: _findImage(url),
+		});
 
 		var xhr = new XMLHttpRequest();
 		xhr.responseType = 'blob';
@@ -104,6 +107,18 @@ module analysis {
 			dialog.doneAnalyzing();
 		}
 	}
+
+	function _findImage(url: string): HTMLImageElement {
+		var images = document.getElementsByTagName('img');
+
+		for (let image of images) {
+			if (image.currentSrc == url) {
+				return image;
+			}
+		}
+
+		return null;
+	}
 }
 
 module dialog {
@@ -116,7 +131,7 @@ module dialog {
 
 	interface InfoSetup {
 		name: string;
-		value: (info: ImageInfo) => any;
+		value: (info: ImageInfo) => string | number | HTMLElement;
 	}
 
 	enum Tabs {
@@ -128,7 +143,7 @@ module dialog {
 	var EXIF_TAB_ID = '__ext_classic_images_metadata__';
 	var OVERLAY_ID = '__ext_classic_images_overlay__';
 	var TABS_ID = '__ext_classic_images_tabs__';
-	
+
 	var ANALYZING_CLASS = '__ext_classic_images_analyzing__';
 	var ERROR_CLASS = '__ext_classic_images_error__';
 	var HIDDEN_TEXT_CLASS = '__ext_classic_images_hidden_text__';
@@ -145,10 +160,26 @@ module dialog {
 	];
 
 	var INFO: InfoSetup[] = [
-		{ name: localize('prop_imagetype'), value: (info) => (info.mimeType) ? localize('val_imagetype', [info.type || localize('unknown'), info.mimeType]) : '' },
-		{ name: localize('prop_dimensions'), value: (info) => (info.width && info.height) ? localize('val_dimensions', [info.width, info.height]) : '' },
-		{ name: localize('prop_bitdepth'), value: (info) => info.bitDepth ? localize('val_bitdepth', [info.bitDepth]) : null },
-		{ name: localize('prop_filesize'), value: (info) => info.fileSize ? localize('val_filesize', [filesize(info.fileSize, { round: 1 }), formatLargeNumber(info.fileSize)]) : '' },
+		{
+			name: localize('prop_imagetype'),
+			value: (info) => (info.mimeType) ? localize('val_imagetype', [info.type || localize('unknown'), info.mimeType]) : ''
+		},
+		{
+			name: localize('prop_dimensions'),
+			value: (info) => (info.width && info.height) ? localize('val_dimensions', [info.width, info.height]) : ''
+		},
+		{
+			name: localize('prop_on_screen_dimensions'),
+			value: (info) => (info.element && imageIsResized(info)) ? localize('val_dimensions', [info.element.clientWidth, info.element.clientHeight]) : null
+		},
+		{
+			name: localize('prop_bitdepth'),
+			value: (info) => info.bitDepth ? localize('val_bitdepth', [info.bitDepth]) : null
+		},
+		{
+			name: localize('prop_filesize'),
+			value: (info) => info.fileSize ? localize('val_filesize', [filesize(info.fileSize, { round: 1 }), formatLargeNumber(info.fileSize)]) : ''
+		},
 		{
 			name: localize('prop_animation'),
 			value: (info) => {
@@ -173,7 +204,18 @@ module dialog {
 				}
 			}
 		},
-		{ name: localize('prop_address'), value: (info) => info.url ? <any>elem('a', formatUrl(info.url), { href: info.url, target: '_blank' }) : '' }
+		{
+			name: localize('prop_title'),
+			value: (info) => (info.element && info.element.title) ? info.element.title : null
+		},
+		{
+			name: localize('prop_alt_text'),
+			value: (info) => (info.element && info.element.alt) ? info.element.alt : null
+		},
+		{
+			name: localize('prop_address'),
+			value: (info) => info.url ? elem('a', formatUrl(info.url), { href: info.url, target: '_blank' }) : ''
+		}
 	];
 
 	var built = false;
@@ -330,7 +372,7 @@ module dialog {
 		dialog.tabSelector.hidden = true;
 
 		var mainTabSelector = elem('a', localize('tab_general'));
-		mainTabSelector.addEventListener('click', selectTab.bind(null, mainTabSelector, Tabs.Main), false);		
+		mainTabSelector.addEventListener('click', selectTab.bind(null, mainTabSelector, Tabs.Main), false);
 
 		var metaTabSelector = elem('a', localize('tab_metadata'));
 		metaTabSelector.addEventListener('click', selectTab.bind(null, metaTabSelector, Tabs.Metadata), false);
@@ -394,6 +436,10 @@ module dialog {
 			elem.style.visibility = 'hidden';
 			hiddenEmbeds.push(info);
 		}
+	}
+
+	function imageIsResized(info: ImageInfo) {
+		return (info.width != info.element.clientWidth || info.height != info.element.clientHeight);
 	}
 
 	function pulse() {
@@ -474,7 +520,7 @@ module dialog {
 
 	function formatExif(data: ExifTag): string {
 		var parts = [];
-		
+
 		var addParts = (obj) => {
 			if (Array.isArray(obj)) {
 				parts = parts.concat(obj);
@@ -482,7 +528,7 @@ module dialog {
 				parts.push(obj);
 			}
 		}
-		var filter = (part) => part !== null && part !== '' && part !== null && part !== undefined; 
+		var filter = (part) => part !== null && part !== '' && part !== null && part !== undefined;
 		var toString = (part) => {
 			try {
 				return part.toString();

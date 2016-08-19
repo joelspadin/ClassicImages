@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "es2015"
+  },
+  "files": [
+    "js/inject/cldr-plural.d.ts",
+    "js/inject/dialog.ts",
+    "js/inject/filesize.d.ts",
+    "js/inject/keys.ts",
+    "js/lib/chrome/chrome.d.ts",
+    "js/lib/filesystem/filesystem.d.ts",
+    "js/lib/filewriter/filewriter.d.ts",
+    "js/lib/webrtc/MediaStream.d.ts",
+    "js/lib/ExifReader.d.ts",
+    "js/lib/libgif.d.ts",
+    "js/lib/options-page.ts",
+    "js/lib/png.d.ts",
+    "js/lib/storage.ts",
+    "js/analysis.ts",
+    "js/background.ts",
+    "js/dynamic-inject.ts",
+    "js/interfaces.ts",
+    "js/options.ts",
+    "js/settings.ts"
+  ]
+}

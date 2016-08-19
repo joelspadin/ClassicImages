@@ -1,7 +1,4 @@
-﻿/// <reference path="storage.ts" />
-/// <reference path="chrome.d.ts" />
-
-interface DOMStringMap {
+﻿interface DOMStringMap {
 	reset: string;
 	manifest: string;
 	msg: string;

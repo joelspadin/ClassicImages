@@ -1,8 +1,4 @@
-﻿/// <reference path="settings.ts" />
-/// <reference path="dynamic-inject.ts" />
-/// <reference path="lib/chrome.d.ts" />
-
-function init() {
+﻿function init() {
 	var MESSAGE_HANDLERS = {
 		'save-image': ImageSave.onSaveMessage,
 	};
@@ -27,8 +23,7 @@ function init() {
 
 	// Long-lived connection message handlers
 	chrome.runtime.onConnect.addListener((port) => {
-		// Port connections should only come from the image properties pop-up for now
-		console.assert(port.name === 'image-properties');
+		console.assert(port.name === 'image-properties', 'Port connections should only come from the image properties pop-up');
 		port.onMessage.addListener((message: IMessage) => {
 			var handler = CONNECTION_HANDLERS[message.action];
 			if (handler) {
@@ -39,7 +34,7 @@ function init() {
 		});
 	});
 
-	inject.init("js/inject/dialog.js", "js/inject/filesize.js", "js/inject/cldr-plural.js");
+	inject.init('js/inject/dialog.js', 'js/inject/filesize.js', 'js/inject/cldr-plural.js');
 }
 
 // Because Opera doesn't seem to fire runtime.onInstalled or runtime.onStartup

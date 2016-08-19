@@ -72,6 +72,12 @@
     <Content Include="css\options-custom.css">
       <DependentUpon>options-custom.less</DependentUpon>
     </Content>
+    <Content Include="css\options-custom.min.css">
+      <DependentUpon>options-custom.css</DependentUpon>
+    </Content>
+    <Content Include="css\options.min.css">
+      <DependentUpon>options.css</DependentUpon>
+    </Content>
     <Content Include="js\inject\filesize.js" />
     <Content Include="js\inject\cldr-plural.js" />
     <Content Include="_locales\de\description.txt" />
@@ -79,6 +85,10 @@
     <Content Include="_locales\hu\description.txt" />
     <Content Include="_locales\pl\description.txt" />
     <Content Include="_locales\sr\description.txt" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
     <None Include="js\lib\ExifReader LICENSE" />
     <Content Include="js\lib\ExifReader.js" />
     <Content Include="js\lib\png.js" />
@@ -93,6 +103,8 @@
     <Content Include="_locales\de\messages.json" />
     <Content Include="_locales\hu\messages.json" />
     <Content Include="_locales\sr\messages.json" />
+    <Content Include="tsconfig.json" />
+    <Content Include="tslint.json" />
     <TypeScriptCompile Include="js\analysis.ts" />
     <TypeScriptCompile Include="js\dynamic-inject.ts" />
     <TypeScriptCompile Include="js\inject\cldr-plural.d.ts" />
@@ -100,9 +112,13 @@
     <TypeScriptCompile Include="js\inject\keys.ts" />
     <TypeScriptCompile Include="js\interfaces.ts" />
     <TypeScriptCompile Include="js\inject\filesize.d.ts" />
+    <TypeScriptCompile Include="js\lib\chrome\chrome.d.ts" />
     <TypeScriptCompile Include="js\lib\ExifReader.d.ts" />
+    <TypeScriptCompile Include="js\lib\filesystem\filesystem.d.ts" />
+    <TypeScriptCompile Include="js\lib\filewriter\filewriter.d.ts" />
     <TypeScriptCompile Include="js\lib\libgif.d.ts" />
     <TypeScriptCompile Include="js\lib\png.d.ts" />
+    <TypeScriptCompile Include="js\lib\webrtc\MediaStream.d.ts" />
     <TypeScriptCompile Include="js\options.ts" />
     <None Include="js\lib\libgif-js LICENSE" />
     <Content Include="js\lib\libgif.js" />
@@ -119,7 +135,6 @@
     <Content Include="img\pattern\use_your_illusion_@2X.png" />
     <TypeScriptCompile Include="js\background.ts" />
     <TypeScriptCompile Include="js\settings.ts" />
-    <Content Include="js\lib\chrome.d.ts" />
     <TypeScriptCompile Include="js\lib\options-page.ts" />
     <TypeScriptCompile Include="js\lib\storage.ts" />
   </ItemGroup>
@@ -134,4 +149,5 @@
       <DependentUpon>dialog.css</DependentUpon>
     </Content>
   </ItemGroup>
+  <ItemGroup />
 </Project>

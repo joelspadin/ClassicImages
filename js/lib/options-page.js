@@ -1,12 +1,10 @@
-/// <reference path="storage.ts" />
-/// <reference path="chrome.d.ts" />
-var OptionsPage = (function () {
+class OptionsPage {
     /* Public Functions */
     /**
      * @param storage The storage object to which the page should be synced
      * @param document The document to sync. Omit to use the main document.
      */
-    function OptionsPage(storage, document) {
+    constructor(storage, document) {
         this.initialized = false;
         this.initQueue = [];
         this.storage = storage;
@@ -20,58 +18,58 @@ var OptionsPage = (function () {
     }
     /* Static Functions */
     /** Gets whether an element is an input field */
-    OptionsPage.isInput = function (element) {
+    static isInput(element) {
         if (OptionsPage.InputTags.indexOf(element.tagName.toLowerCase()) >= 0) {
             return true;
         }
-    };
+    }
     /** Gets whether an element should be ignored */
-    OptionsPage.shouldSkip = function (element) {
+    static shouldSkip(element) {
         if (element instanceof HTMLInputElement) {
             return (OptionsPage.SkipTypes.indexOf(element.type.toLowerCase()) >= 0);
         }
         else {
             return false;
         }
-    };
+    }
     /** Gets whether an element is a numeric input */
-    OptionsPage.isNumeric = function (element) {
+    static isNumeric(element) {
         if (element instanceof HTMLInputElement) {
             return (OptionsPage.NumericTypes.indexOf(element.type.toLowerCase()) >= 0);
         }
         else {
             return false;
         }
-    };
+    }
     /** Gets whether an element is a boolean input */
-    OptionsPage.isCheckable = function (element) {
+    static isCheckable(element) {
         if (element instanceof HTMLInputElement) {
             return (OptionsPage.CheckableTypes.indexOf(element.type.toLowerCase()) >= 0);
         }
         else {
             return false;
         }
-    };
+    }
     /** Gets whether an element is a radio button */
-    OptionsPage.isRadio = function (element) {
+    static isRadio(element) {
         if (element instanceof HTMLInputElement) {
             return (OptionsPage.RadioTypes.indexOf(element.type.toLowerCase()) >= 0);
         }
         else {
             return false;
         }
-    };
+    }
     /** Gets whether an element is a multi-select input */
-    OptionsPage.isMultiSelect = function (element) {
+    static isMultiSelect(element) {
         if (element instanceof HTMLSelectElement) {
             return (OptionsPage.MultiSelectTypes.indexOf(element.type.toLowerCase()) >= 0);
         }
         else {
             return false;
         }
-    };
+    }
     /** Gets the value of a set of radio buttons */
-    OptionsPage.getRadioValue = function (element) {
+    static getRadioValue(element) {
         var inputs = element.ownerDocument.querySelectorAll('input[type=radio][name="' + element.getAttribute('name') + '"]');
         for (var i = 0; i < inputs.length; i++) {
             var input = inputs[i];
@@ -80,13 +78,13 @@ var OptionsPage = (function () {
             }
         }
         return null;
-    };
+    }
     /**
      * Coerces a number to the min/max values set on an input element
      * @param element The input element
      * @param value The value to check. If omitted, the element's current value is used.
      */
-    OptionsPage.coerceToLimits = function (element, value) {
+    static coerceToLimits(element, value) {
         if (value === undefined) {
             value = element.valueAsNumber;
         }
@@ -100,11 +98,11 @@ var OptionsPage = (function () {
             value = 0;
         }
         return value;
-    };
+    }
     /**
      * Gets the load/save transformation function for an element
      */
-    OptionsPage.getTransformFunction = function (element, funcName) {
+    static getTransformFunction(element, funcName) {
         var func = element.dataset[funcName];
         if (func) {
             return window[func] || null;
@@ -112,28 +110,28 @@ var OptionsPage = (function () {
         else {
             return null;
         }
-    };
-    OptionsPage.prototype.update = function (element) {
+    }
+    update(element) {
         this._resolveElement(element).forEach(this._update.bind(this));
-    };
-    OptionsPage.prototype.save = function (element) {
+    }
+    save(element) {
         this._resolveElement(element).forEach(this._save.bind(this));
-    };
+    }
     /**
      * Changes the storage object used by the options page.
      * This will update all elements on the page to the values in the new storage object.
      */
-    OptionsPage.prototype.setStorage = function (storage) {
+    setStorage(storage) {
         this.storage = storage;
         var formElements = document.querySelectorAll(OptionsPage.InputTags.join(','));
         this._walkElements(formElements, this.update);
-    };
+    }
     /**
      * Configures an element to be synced with storage.
      * @param element The element to sync
      * @param resetButton An element which, when clicked, should reset the synced element to its default value
      */
-    OptionsPage.prototype.addInput = function (element, resetButton) {
+    addInput(element, resetButton) {
         if (!this.initialized) {
             // If page not initialized, wait until later to add input
             this.initQueue.push({ el: element, reset: resetButton });
@@ -155,13 +153,12 @@ var OptionsPage = (function () {
                 }
             }
         }
-    };
+    }
     /**
      * Returns a DL element with the keys and raw values in storage
      * @param sortfunction A function to sort settings by name
      */
-    OptionsPage.prototype.debugStorage = function (sortfunction) {
-        var _this = this;
+    debugStorage(sortfunction) {
         var keys = [];
         for (var key in this.storage.storage) {
             if (this.storage.storage.hasOwnProperty(key)) {
@@ -170,29 +167,28 @@ var OptionsPage = (function () {
         }
         keys.sort(sortfunction);
         var list = document.createElement('dl');
-        keys.forEach(function (key) {
+        keys.forEach((key) => {
             var term = document.createElement('dt');
             var desc = document.createElement('dd');
             term.textContent = key;
-            desc.textContent = _this.storage.storage[key];
+            desc.textContent = this.storage.storage[key];
             list.appendChild(term);
             list.appendChild(desc);
         });
         return list;
-    };
+    }
     /* Private Functions */
-    OptionsPage.prototype._onDOMContentLoaded = function () {
-        var _this = this;
+    _onDOMContentLoaded() {
         var formElements = document.querySelectorAll(OptionsPage.InputTags.join(','));
         this._walkElements(formElements, this._setupElement);
         this._setupAllResetButtons();
         this.initialized = true;
-        this.initQueue.forEach(function (item) {
-            _this.addInput(item.el, item.reset);
+        this.initQueue.forEach((item) => {
+            this.addInput(item.el, item.reset);
         });
         this.initQueue = [];
-    };
-    OptionsPage.prototype._walkElements = function (elements, callback) {
+    }
+    _walkElements(elements, callback) {
         for (var i = 0; i < elements.length; i++) {
             var element = elements[i];
             var name = element.getAttribute('name');
@@ -201,24 +197,24 @@ var OptionsPage = (function () {
             }
             callback.bind(this)(element);
         }
-    };
-    OptionsPage.prototype._setupElement = function (element) {
+    }
+    _setupElement(element) {
         element.addEventListener('change', this._onElementChanged.bind(this), true);
         this._update(element);
-    };
-    OptionsPage.prototype._onElementChanged = function (e) {
+    }
+    _onElementChanged(e) {
         var element = e.currentTarget;
         this._save(element);
-    };
-    OptionsPage.prototype._addResetButton = function (button, elements) {
+    }
+    _addResetButton(button, elements) {
         var self = this;
-        button.addEventListener('click', function (e) {
+        button.addEventListener('click', (e) => {
             if (e.target.hasAttribute('data-confirm')) {
                 var message = (elements.length > 1) ?
                     'Are you sure you want to reset these settings to their default values?' :
                     'Are you sure you want to reset this setting to its default value?';
                 button.setAttribute('disabled', 'disabled');
-                ModalDialog.confirm('Reset to default', message, function (result) {
+                ModalDialog.confirm('Reset to default', message, (result) => {
                     if (result) {
                         self._onResetClick.bind(self)(elements);
                     }
@@ -229,8 +225,8 @@ var OptionsPage = (function () {
                 self._onResetClick.bind(self)(elements);
             }
         });
-    };
-    OptionsPage.prototype._onResetClick = function (elements) {
+    }
+    _onResetClick(elements) {
         for (var i = 0; i < elements.length; i++) {
             var element = elements[i];
             var name = element.getAttribute('name');
@@ -239,8 +235,8 @@ var OptionsPage = (function () {
             this._update(element);
             this._sendChangedEvent(name, oldVal, this.storage.get(name));
         }
-    };
-    OptionsPage.prototype._findResetButtons = function (element) {
+    }
+    _findResetButtons(element) {
         var name = element.getAttribute('name');
         try {
             return this.document.querySelectorAll('[data-reset~="' + name + '"]');
@@ -248,19 +244,19 @@ var OptionsPage = (function () {
         catch (e) {
             return null;
         }
-    };
-    OptionsPage.prototype._setupAllResetButtons = function () {
+    }
+    _setupAllResetButtons() {
         var resets = this.document.querySelectorAll('[data-reset]');
         for (var i = 0; i < resets.length; i++) {
             var elementNames = resets[i].dataset['reset'].split(' ');
             var elements = [];
-            elementNames.forEach(function (name) {
+            elementNames.forEach((name) => {
                 elements = elements.concat(Array.prototype.slice.call(document.getElementsByName(name)));
             });
             this._addResetButton(resets[i], Array.prototype.slice.call(elements));
         }
-    };
-    OptionsPage.prototype._sendChangedEvent = function (key, oldValue, newValue) {
+    }
+    _sendChangedEvent(key, oldValue, newValue) {
         var e = document.createEvent('CustomEvent');
         e.initCustomEvent('setting', true, true, {
             key: key,
@@ -268,8 +264,8 @@ var OptionsPage = (function () {
             newValue: newValue,
         });
         this.document.dispatchEvent(e);
-    };
-    OptionsPage.prototype._update = function (element) {
+    }
+    _update(element) {
         var inputEl = element;
         var name = element.getAttribute('name');
         var value = this.storage.get(name);
@@ -302,8 +298,8 @@ var OptionsPage = (function () {
                 }
             }
         }
-    };
-    OptionsPage.prototype._save = function (element) {
+    }
+    _save(element) {
         var inputEl = element;
         var name = element.getAttribute('name');
         var value;
@@ -333,8 +329,8 @@ var OptionsPage = (function () {
         if (value != oldValue) {
             this._sendChangedEvent(name, oldValue, value);
         }
-    };
-    OptionsPage.prototype._resolveElement = function (element) {
+    }
+    _resolveElement(element) {
         if (typeof element === 'string') {
             return Array.prototype.slice.call(this.document.getElementsByName(element));
         }
@@ -350,27 +346,26 @@ var OptionsPage = (function () {
         else {
             return [];
         }
-    };
-    /* Static Properties */
-    /** elements to which storage code should be attached */
-    OptionsPage.InputTags = ['input', 'select', 'textarea'];
-    /** Input types which should be ignored */
-    OptionsPage.SkipTypes = ['button', 'file', 'hidden', 'image', 'reset', 'submit'];
-    /** Numeric input types */
-    OptionsPage.NumericTypes = ['number', 'range'];
-    /** Boolean input types */
-    OptionsPage.CheckableTypes = ['checkbox', 'radio'];
-    /** Radio button input types */
-    OptionsPage.RadioTypes = ['radio'];
-    /** Types with multiple possible selections */
-    OptionsPage.MultiSelectTypes = ['select-multiple'];
-    /** Transform function enum */
-    OptionsPage.Transform = { Load: 'loadfunc', Save: 'savefunc' };
-    return OptionsPage;
-})();
+    }
+}
+/* Static Properties */
+/** elements to which storage code should be attached */
+OptionsPage.InputTags = ['input', 'select', 'textarea'];
+/** Input types which should be ignored */
+OptionsPage.SkipTypes = ['button', 'file', 'hidden', 'image', 'reset', 'submit'];
+/** Numeric input types */
+OptionsPage.NumericTypes = ['number', 'range'];
+/** Boolean input types */
+OptionsPage.CheckableTypes = ['checkbox', 'radio'];
+/** Radio button input types */
+OptionsPage.RadioTypes = ['radio'];
+/** Types with multiple possible selections */
+OptionsPage.MultiSelectTypes = ['select-multiple'];
+/** Transform function enum */
+OptionsPage.Transform = { Load: 'loadfunc', Save: 'savefunc' };
 /** Adapted from http://css-tricks.com/value-bubbles-for-range-inputs/ */
-var RangeBubble = (function () {
-    function RangeBubble(input) {
+class RangeBubble {
+    constructor(input) {
         this._input = input;
         this._output = document.createElement('output');
         if (this._input.nextSibling) {
@@ -386,7 +381,7 @@ var RangeBubble = (function () {
         this._input.addEventListener('focus', this._showOutput.bind(this));
         this._output.addEventListener('transitionend', this._hideOutput.bind(this));
     }
-    RangeBubble.prototype._modifyOffset = function () {
+    _modifyOffset() {
         var input = this._input;
         var output = this._output;
         var vertical = input.classList.contains('vertical');
@@ -418,21 +413,19 @@ var RangeBubble = (function () {
             output.style.left = newPlace + input.offsetLeft + 'px';
             output.style.marginLeft = ((RangeBubble.HandleSize - output.offsetWidth) / 2) + 'px';
         }
-    };
-    RangeBubble.prototype._showOutput = function () {
+    }
+    _showOutput() {
         this._output.style.display = 'block';
-    };
-    RangeBubble.prototype._hideOutput = function () {
+    }
+    _hideOutput() {
         if (window.getComputedStyle(this._output, null).getPropertyValue('opacity') === '0') {
             this._output.style.display = 'none';
         }
-    };
-    RangeBubble.HandleSize = 11;
-    return RangeBubble;
-})();
-var ModalDialog = (function () {
-    function ModalDialog(title, text, onclose) {
-        var _this = this;
+    }
+}
+RangeBubble.HandleSize = 11;
+class ModalDialog {
+    constructor(title, text, onclose) {
         var buttons;
         if (typeof onclose === 'function') {
             buttons = Array.prototype.slice.call(arguments, [3]);
@@ -454,13 +447,13 @@ var ModalDialog = (function () {
         var footer = document.createElement('footer');
         header.textContent = title;
         body.innerHTML = '<p>' + text.replace('\n\n', '</p><p>').replace('\n', '<br>') + '</p>';
-        buttons.forEach(function (info) {
+        buttons.forEach((info) => {
             var button = document.createElement('button');
             button.textContent = info.text;
             if (info.action) {
                 button.addEventListener('click', info.action, false);
             }
-            button.addEventListener('click', _this._close.bind(_this), false);
+            button.addEventListener('click', this._close.bind(this), false);
             footer.appendChild(button);
         });
         this.dialog.appendChild(header);
@@ -468,55 +461,49 @@ var ModalDialog = (function () {
         this.dialog.appendChild(footer);
         this.overlay.appendChild(this.dialog);
         document.body.appendChild(this.overlay);
-        window.setTimeout(function () { return _this.overlay.classList.remove('transparent'); }, 1);
+        window.setTimeout(() => this.overlay.classList.remove('transparent'), 1);
     }
-    ModalDialog.confirm = function (title, text, callback) {
+    static confirm(title, text, callback) {
         return new ModalDialog(title, text, {
             text: 'Cancel',
-            action: function (e) { return callback(false); },
+            action: (e) => callback(false),
         }, {
             text: 'OK',
-            action: function (e) { return callback(true); },
+            action: (e) => callback(true),
         });
-    };
-    ModalDialog.message = function (title, text, onclose) {
+    }
+    static message(title, text, onclose) {
         if (typeof onclose !== 'function') {
-            onclose = function (e) { return undefined; };
+            onclose = (e) => undefined;
         }
         return new ModalDialog(title, text, onclose, {
             text: 'OK',
         });
-    };
-    ModalDialog.prototype._cancelEvent = function (e) {
+    }
+    _cancelEvent(e) {
         e.stopPropagation();
-    };
-    ModalDialog.prototype._pulse = function (e) {
+    }
+    _pulse(e) {
         this.dialog.classList.add('pulse');
-    };
-    ModalDialog.prototype._endPulse = function (e) {
+    }
+    _endPulse(e) {
         this.dialog.classList.remove('pulse');
-    };
-    ModalDialog.prototype._close = function (e) {
-        var _this = this;
+    }
+    _close(e) {
         if (this.onclose) {
             this.onclose();
         }
         this.overlay.classList.add('transparent');
-        this.overlay.addEventListener('transitionend', function (e) {
-            document.body.removeChild(_this.overlay);
-            _this.overlay = null;
-            _this.dialog = null;
-            _this.onclose = null;
+        this.overlay.addEventListener('transitionend', (e) => {
+            document.body.removeChild(this.overlay);
+            this.overlay = null;
+            this.dialog = null;
+            this.onclose = null;
         });
-    };
-    return ModalDialog;
-})();
-// Localization functions
-function localize(message) {
-    var substitutions = [];
-    for (var _i = 1; _i < arguments.length; _i++) {
-        substitutions[_i - 1] = arguments[_i];
     }
+}
+// Localization functions
+function localize(message, ...substitutions) {
     return chrome.i18n.getMessage(message, substitutions);
 }
 var i18n;
@@ -541,19 +528,13 @@ var i18n;
     }
     i18n.localizePage = localizePage;
     function localizeTitle() {
-        document.title = document.title.replace(/__MSG_(.+)__/g, function (match) {
-            var groups = [];
-            for (var _i = 1; _i < arguments.length; _i++) {
-                groups[_i - 1] = arguments[_i];
-            }
-            return chrome.i18n.getMessage(groups[0]);
-        });
+        document.title = document.title.replace(/__MSG_(.+)__/g, (match, ...groups) => chrome.i18n.getMessage(groups[0]));
     }
     i18n.localizeTitle = localizeTitle;
 })(i18n || (i18n = {}));
 // Automatically intialize things on startup
 window.optionsPage = null;
-window.addEventListener('DOMContentLoaded', function () {
+window.addEventListener('DOMContentLoaded', () => {
     // Localize the page
     i18n.localizePage();
     // If there is a storage object with a common name, build the options page automatically
@@ -579,11 +560,11 @@ window.addEventListener('DOMContentLoaded', function () {
         var field = fields[i];
         var format = field.dataset['format'] || '{0}';
         var values = [];
-        field.dataset['manifest'].split(',').forEach(function (property) {
+        field.dataset['manifest'].split(',').forEach((property) => {
             var chunks = property.split('.');
             var current = manifest;
             try {
-                chunks.forEach(function (chunk) {
+                chunks.forEach((chunk) => {
                     current = current[chunk];
                 });
             }
@@ -596,11 +577,7 @@ window.addEventListener('DOMContentLoaded', function () {
             field.textContent = 'manifest: ' + field.dataset['manifest'];
         }
         else {
-            field.textContent = format.replace(/{(\d+)}/g, function (match) {
-                var groups = [];
-                for (var _i = 1; _i < arguments.length; _i++) {
-                    groups[_i - 1] = arguments[_i];
-                }
+            field.textContent = format.replace(/{(\d+)}/g, function (match, ...groups) {
                 var index = groups[0];
                 return (typeof values[index] != 'undefined') ? values[index].toString() : match.toString();
             });

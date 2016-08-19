@@ -1,6 +1,4 @@
-﻿/// <reference path="lib/storage.ts" />
-
-interface SettingStorage {
+﻿interface SettingStorage {
 	ctrlAction: string;
 	ctrlAltAction: string;
 	ctrlShiftAction: string;
@@ -19,4 +17,3 @@ var settings = CreateSettings({
 		'[*.]pixiv.net',
 	],
 });
-

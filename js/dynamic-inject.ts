@@ -1,6 +1,4 @@
-﻿/// <reference path="lib/chrome.d.ts" />
-
-module inject {
+﻿module inject {
 	var INJECTED_KEY = 'injected';
 
 	var _script: string = null;
@@ -28,16 +26,15 @@ module inject {
 	export function injectScript(tabId: number, callback?: (err: string) => void) {
 		getTabInjected(tabId, (err, injected) => {
 			if (injected) {
-				// script already injected. do nothing.
+				// Script already injected. Do nothing.
 				if (callback) {
 					callback(null);
 				}
 			} else {
-				// script not injected yet. inject it.
+				// Script not injected yet. Inject it.
 				doInject(tabId, callback);
 			}
 		});
-		
 	}
 
 	function doInject(tabId: number, callback?: (err: string) => void) {
@@ -45,7 +42,7 @@ module inject {
 		scripts.push(_script);
 
 		function injectOne() {
-			if (scripts.length == 0) {
+			if (scripts.length === 0) {
 				setTabInjected(tabId, true, callback);
 			} else {
 				var next = scripts.shift();

@@ -1,7 +1,3 @@
-/// <reference path="lib/chrome.d.ts" />
-/// <reference path="lib/options-page.ts" />
-/// <reference path="settings.ts" />
-
 interface SettingEventDetail {
 	key: string;
 	oldValue: any;

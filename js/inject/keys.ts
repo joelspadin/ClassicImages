@@ -1,6 +1,3 @@
-/// <reference path="../lib/chrome.d.ts" />
-/// <reference path="../interfaces.ts" />
-
 interface HTMLAnchorElement {
 	download: string;
 }

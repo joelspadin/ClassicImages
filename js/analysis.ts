@@ -1,8 +1,4 @@
-﻿/// <reference path="interfaces.ts" />
-/// <reference path="lib/png.d.ts" />
-/// <reference path="lib/libgif.d.ts" />
-/// <reference path="lib/ExifReader.d.ts" />
-
+﻿
 var MIME_TYPES: { [key: string]: string[]; } = {
 	'BMP': ['image/bmp', 'image/x-windows-bmp'],
 	'GIF': ['image/gif'],
