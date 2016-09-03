@@ -131,9 +131,21 @@
     "message": "110px",
     "description": "Width of the property headers on the image properties pop-up"
   },
+  "prop_alt_text": {
+    "message": "Алтернативни текст",
+    "description": "Header for the image's alternate text"
+  },
+  "prop_title": {
+    "message": "Наслов",
+    "description": "Header for the image's title attribute"
+  },
   "prop_dimensions": {
     "message": "Димензије",
     "description": "Header for the image dimensions"
+  },
+  "prop_on_screen_dimensions": {
+    "message": "Димензије на екрану",
+    "description": "Header for the dimensions of the image as it appears on the screen"
   },
   "val_dimensions": {
     "message": "$width$ × $height$ пиксела",

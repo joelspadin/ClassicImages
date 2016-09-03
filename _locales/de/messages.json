@@ -131,9 +131,21 @@
     "message": "80px",
     "description": "Width of the property headers on the image properties pop-up"
   },
+  "prop_alt_text": {
+    "message": "Alternativer Text",
+    "description": "Header for the image's alternate text"
+  },
+  "prop_title": {
+    "message": "Titel",
+    "description": "Header for the image's title attribute"
+  },
   "prop_dimensions": {
     "message": "Abmessungen",
     "description": "Header for the image dimensions"
+  },
+  "prop_on_screen_dimensions": {
+    "message": "Bildschirmgröße",
+    "description": "Header for the dimensions of the image as it appears on the screen"
   },
   "val_dimensions": {
     "message": "$width$ × $height$ Pixel",
