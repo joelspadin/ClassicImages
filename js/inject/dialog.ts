@@ -57,8 +57,34 @@ module analysis {
 			element: _findImage(url),
 		});
 
+		_loadImage(url, port);
+	}
+
+	export function end() {
+		if (_port !== null) {
+			_port.postMessage({ action: 'closed' });
+			_port = null;
+			dialog.doneAnalyzing();
+		}
+	}
+
+	function _findImage(url: string): HTMLImageElement {
+		var images = document.getElementsByTagName('img');
+
+		for (let image of images) {
+			if (image.currentSrc == url) {
+				return image;
+			}
+		}
+
+		return null;
+	}
+
+	function _loadImage(url: string, port: chrome.runtime.Port) {
 		var xhr = new XMLHttpRequest();
-		xhr.responseType = 'blob';
+
+		// Can't use blob on data urls because of https://crbug.com/412752
+		xhr.responseType = url.startsWith('data:') ? 'arraybuffer' : 'blob';
 
 		xhr.addEventListener('readystatechange', (e: XMLHttpRequestEvent) => {
 			if (xhr.readyState === 2) {
@@ -84,40 +110,30 @@ module analysis {
 
 		xhr.addEventListener('load', (e) => {
 			// Pass the image off to the background for further processing
+			var blob: Blob;
+
+			if (xhr.responseType == 'arraybuffer') {
+				var mimetype = xhr.getResponseHeader('content-type');
+				blob = new Blob([xhr.response], { type: mimetype });
+			} else {
+				blob = xhr.response;
+			}
+
 			port.postMessage({
 				action: 'analyze-image',
-				mimeType: xhr.responseType,
+				mimeType: blob.type,
 				filename: url.substr(url.lastIndexOf('/') + 1),
-				url: URL.createObjectURL(xhr.response),
+				url: URL.createObjectURL(blob),
 			});
 		});
 
 		xhr.addEventListener('error', (e) => {
-			dialog.showLoadError(localize('error_load_failed', [e.error.toString()]));
+			var message = (e.error || '').toString();
+			dialog.showLoadError(localize('error_load_failed', [message]));
 		});
 
 		xhr.open('get', url, true);
 		xhr.send();
-	}
-
-	export function end() {
-		if (_port !== null) {
-			_port.postMessage({ action: 'closed' });
-			_port = null;
-			dialog.doneAnalyzing();
-		}
-	}
-
-	function _findImage(url: string): HTMLImageElement {
-		var images = document.getElementsByTagName('img');
-
-		for (let image of images) {
-			if (image.currentSrc == url) {
-				return image;
-			}
-		}
-
-		return null;
 	}
 }
 
@@ -154,6 +170,8 @@ module dialog {
 
 	var ANIMATION_LENGTH = 200;
 	var PROGRESS_BAR_DOTS = 6;
+	var PROGRESS_BAR_DELAY = 200;
+	var MAX_DATA_URL_LENGTH = 40;
 
 	var BUTTONS = [
 		{ text: localize('close'), action: close },
@@ -219,6 +237,7 @@ module dialog {
 	];
 
 	var built = false;
+	var finished = false;
 	var closingTimeout: number = null;
 	var hiddenEmbeds: HiddenEmbed[] = [];
 	var inputIndex = 0;
@@ -257,19 +276,31 @@ module dialog {
 
 		updateImageInfo(info);
 
+		finished = false;
+
 		window.setTimeout(() => {
 			dialog.overlay.removeAttribute('style');
 			dialog.overlay.classList.remove(TRANSPARENT_CLASS);
-			dialog.progress.classList.remove(TRANSPARENT_CLASS);
 		}, 10);
+
+		// Delay showing the progress animation for a moment so that it doesn't pop in
+		// for a tiny moment on small images.
+		window.setTimeout(() => {
+			if (!finished) {
+				dialog.progress.classList.remove(TRANSPARENT_CLASS);
+			}
+		}, PROGRESS_BAR_DELAY);
 	}
 
 	export function showLoadError(message: string) {
 		var error = elem('p', message, { 'class': ERROR_CLASS });
 		dialog.content.insertBefore(error, dialog.content.querySelector('footer'));
+
+		doneAnalyzing();
 	}
 
 	export function doneAnalyzing() {
+		finished = true;
 		if (dialog.progress) {
 			dialog.progress.classList.add(TRANSPARENT_CLASS);
 		}
@@ -505,7 +536,13 @@ module dialog {
 	function formatUrl(url: string): string {
 		var a = document.createElement('a');
 		a.href = url;
-		return a.host + a.pathname;
+
+		if (a.protocol === 'data:') {
+			var path = a.pathname.length <= MAX_DATA_URL_LENGTH ? a.pathname : a.pathname.substr(0, MAX_DATA_URL_LENGTH) + '...';
+			return a.protocol + a.host + path;
+		} else {
+			return a.host + a.pathname;
+		}
 	}
 
 	function formatNumber(n: number): string {
