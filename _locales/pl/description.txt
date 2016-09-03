@@ -1,7 +1,11 @@
-Rozszerzenie "Klasyczne obrazki" przywraca kilka funkcji dotyczących obsługi obrazków, które zniknęły z Opery 15+, a były w Operze 12.
+Rozszerzenie „Klasyczne obrazy” przywraca niektóre funkcje dotyczące obsługi obrazów, które zniknęły podczas przejścia z Opery 12 do Opery 15 i nowszych wersji.
 
 Obecne funkcje:
-- Alt+Ctrl+LPM umożliwia zapisywanie obrazków (skróty klawiszowe są konfigurowalne. Opera 20+ wymaga użycia okna dialogowego "Zapisz jako".)
-- Okno pop-up właściwości obrazków
+• Zapis obrazów za pomocą Alt+Ctrl+kliknięcie myszki (skróty klawiszowe są konfigurowalne, ale użycie okna dialogowego „Zapisz jako” wymaga Opery 20 i nowszych wersji),
+• Wyskakujące okno właściwości obrazów.
 
-Daj mi znać, jeśli były jeszcze inne funkcje obrazków, które chciałbyś, żebym przywrócił je w tym rozszerzeniu.
+Daj mi znać, jeśli są jakiekolwiek inne funkcje obrazów, które chciałbyś, bym je przywrócił w tym rozszerzeniu.
+
+——————————————
+
+UWAGA! Polonizacja NIE JEST wykonana przez twórcę tego rozszerzenia! W przypadku błędu/ów w polonizacji poinformuj o tym (najlepiej również za pomocą pokazania go/ich poprzez zrzut/y ekranu) wysyłając wiadomość na MyReksio@gmail.com, a naprawi się go/je najszybciej jak to tylko możliwe.
