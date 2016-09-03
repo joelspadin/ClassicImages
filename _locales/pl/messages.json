@@ -1,16 +1,16 @@
 ﻿{
   "extension_name": {
-    "message": "Klasyczne obrazki"
+    "message": "Klasyczne obrazy"
   },
   "extension_desc": {
-    "message": "Przywraca funkcje obrazków z Opery 12."
+    "message": "Przywraca funkcje obrazów znane z Opery 12."
   },
 
   "__MSG_extension_name__": {
-    "message": "Klasyczne obrazki"
+    "message": "Klasyczne obrazy"
   },
   "__MSG_extension_desc__": {
-    "message": "Przywraca funkcje obrazków z Opery 12."
+    "message": "Przywraca funkcje obrazów znane z Opery 12."
   },
 
   "plural_rule_zero": {
@@ -18,19 +18,19 @@
     "description": "CLDR plural rules. Copy the rules for your language from https://github.com/santhoshtr/CLDRPluralRuleParser/blob/master/data/plurals.json. If your language does not use a plural group, use an empty string."
   },
   "plural_rule_one": {
-    "message": "i = 1 i v = 0 @integer 1"
+    "message": "i = 1 and v = 0 @integer 1"
   },
   "plural_rule_two": {
     "message": ""
   },
   "plural_rule_few": {
-    "message": ""
+    "message": "v = 0 and i % 10 = 2..4 and i % 100 != 12..14 @integer 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, …"
   },
   "plural_rule_many": {
-    "message": ""
+    "message": "v = 0 and i != 1 and i % 10 = 0..1 or v = 0 and i % 10 = 5..9 or v = 0 and i % 100 = 12..14 @integer 0, 5~19, 100, 1000, 10000, 100000, 1000000, …"
   },
   "plural_rule_other": {
-    "message": " @integer 0, 2~16, 100, 1000, 10000, 100000, 1000000, … @decimal 0.0~1.5, 10.0, 100.0, 1000.0, 10000.0, 100000.0, 1000000.0, …"
+    "message": "   @decimal 0.0~1.5, 10.0, 100.0, 1000.0, 10000.0, 100000.0, 1000000.0, …"
   },
   "thousands_separator": {
     "message": ",",
@@ -43,23 +43,23 @@
   },
 
   "ctx_image_properties": {
-    "message": "Właściwości obrazka",
+    "message": "Właściwości obrazu",
     "description": "Text for the context menu item"
   },
   "title_options_page_tab": {
-    "message": "Ustawienia \"Klasycznych obrazków\"",
+    "message": "Ustawienia „Klasycznych obrazów”",
     "description": "Tab title for the options page"
   },
   "title_image_properties": {
-    "message": "Właściwości obrazka",
+    "message": "Właściwości obrazu",
     "description": "Title of the the image properties pop-up"
   },
   "title_image_actions": {
-    "message": "Akcje obrazka",
+    "message": "Akcje obrazu",
     "description": "Title for the options page: image downloading actions"
   },
   "title_if_downloads_fail": {
-    "message": "Jeśli pobieranie obrazka nie powiedzie się na niektórych stronach",
+    "message": "Jeśli pobieranie obrazu nie powiedzie się na niektórych stronach",
     "description": "Title for the options page: image download workaround"
   },
   "title_restricted_domains": {
@@ -72,7 +72,7 @@
   },
 
   "info_if_downloads_fail": {
-    "message": "Akcja <code>Zapisz jako...</code> używa interfejsu rozszerzeń API, który czasami nie powiedzie się na stronach, które blokują hotlinkowanie. Jeśli pobieranie nie powiedzie się z błędem, <strong>Przerwano: Problem z serwerem</strong>, dodaj stronę do listy poniżej. To umożliwia obejście, które zazwyczaj rozwiązuje problem, ale okienko z zapisem i postęp pobierania się nie pokażą dopóki obrazek nie pobierze się w całości.",
+    "message": "Akcja „<code>Zapisz jako...</code>” używa interfejsu rozszerzeń API, który czasami nie powiedzie się na stronach uniemożliwiających umieszczanie zewnętrznych łączy. Jeśli pobieranie nie powiedzie się i zobaczysz błąd „<strong>Przerwano: Problem z serwerem</strong>”, dodaj stronę do listy poniżej. To spowoduje obejście, które zazwyczaj rozwiązuje problem, ale okno z zapisem i postęp pobierania nie pokażą się, dopóki obraz nie pobierze się w całości.",
     "description": "Description for the image download workaround"
   },
   "info_special_patterns": {
@@ -81,7 +81,7 @@
   },
 
   "warn_no_downloads_api": {
-    "message": "Akcja <code>Zapisz jako...</code> nie będzie działać, ponieważ twoja przeglądarka nie wspiera interfejsu pobierania API. Dla pełnej funkcjonalności, użyj Opery 20 lub wyższej.",
+    "message": "Akcja „<code>Zapisz jako...</code>” nie będzie działać, ponieważ Twoja przeglądarka nie wspiera interfejsu pobierania API. Dla pełnej funkcjonalności, użyj Opery 20 lub nowszej.",
     "description": "Message which appears on the options page when the downloads API is unsupported"
   },
 
@@ -98,7 +98,7 @@
     "description": "The Shift key on a keyboard"
   },
   "click": {
-    "message": "LPM",
+    "message": "Kliknięcie myszką",
     "description": "Action performed when pressing a mouse button"
   },
   "save_as": {
@@ -122,7 +122,7 @@
     "description": "Pattern description for [abc] where the characters inside brackets may or may not be present"
   },
   "any_subdomain": {
-    "message": "Dowolna subdomena lub brak subdomeny",
+    "message": "Dowolna pod-domena lub brak pod-domeny",
     "description": "Pattern description for [*.] which is a useful form of the bracket pattern that matches any website's domain or subdomain"
   },
 
@@ -135,15 +135,27 @@
     "description": "Tab title for the image properties pop-up. Refers to data embedded within an image, such as Exif data."
   },
   "prop_header_width": {
-    "message": "80px",
+    "message": "80 pikseli",
     "description": "Width of the property headers on the image properties pop-up"
+  },
+  "prop_alt_text": {
+    "message": "Tekst alternatywny",
+    "description": "Header for the image's alternate text"
+  },
+  "prop_title": {
+    "message": "Tytuł",
+    "description": "Header for the image's title attribute"
   },
   "prop_dimensions": {
     "message": "Wymiary",
     "description": "Header for the image dimensions"
   },
+  "prop_on_screen_dimensions": {
+    "message": "Rozmiar ekranu",
+    "description": "Header for the dimensions of the image as it appears on the screen"
+  },
   "val_dimensions": {
-    "message": "$width$ × $height$ px",
+    "message": "$width$ piksel/e/i szerokości na $height$ piksel/e/i wysokości",
     "description": "Value for the image dimensions",
     "placeholders": {
       "width": {
@@ -161,7 +173,7 @@
     "description": "Header for the image bit depth"
   },
   "val_bitdepth": {
-    "message": "$bits$ bity/ów na piksel",
+    "message": "$bits$ bit/y/ów na piksel",
     "description": "Value for the image bit depth",
     "placeholders": {
       "bits": {
@@ -171,7 +183,7 @@
     }
   },
   "prop_imagetype": {
-    "message": "Typ obrazka",
+    "message": "Typ obrazu",
     "description": "Header for the image format"
   },
   "val_imagetype": {
@@ -197,7 +209,7 @@
     "description": "Header for the image file size"
   },
   "val_filesize": {
-    "message": "$humansize$ ($bytesize$ bajty/ów)",
+    "message": "$humansize$ ($bytesize$ bajt/y/ów)",
     "description": "Value for the image file size",
     "placeholders": {
       "humansize": {
@@ -215,7 +227,7 @@
     "description": "Header for the image animation data"
   },
   "val_animation_duration": {
-    "message": "$frame_count$ $frames$ w $duration$ $seconds$ ($framerate$ klatek/ka na sekundę)",
+    "message": "$frame_count$ $frames$ w $duration$ $seconds$ ($framerate$ klatka/i/ek na sekundę)",
     "description": "Value for the image animation data with duration",
     "placeholders": {
       "frame_count": {
@@ -255,20 +267,20 @@
     }
   },
   "cnt_frames": {
-    "message": "ramka;ramek/ki",
+    "message": "ramek;ramka;ramki;ramek;ramek;ramki",
     "description": "Number of frames in an animation. List CLDR plural forms in order zero;one;two;few;many;other. Omit plural forms not used by your language."
   },
   "cnt_seconds": {
-    "message": "sekundzie;sekundy",
+    "message": "sekund;sekunda;sekundy;sekund;sekund;sekundy",
     "description": "Unit of time. List CLDR plural forms in order zero;one;two;few;many;other. Omit plural forms not used by your language."
   },
   "prop_address": {
-    "message": "Adres",
+    "message": "Adres łącza",
     "description": "Header for the image URL"
   },
 
   "analyzing": {
-    "message": "Analizuję...",
+    "message": "Analizowanie...",
     "description": "Displayed for an image property when the value is not yet available because Classic Images is still analyzing the image"
   },
 
@@ -278,7 +290,7 @@
   },
 
   "error_load_failed": {
-    "message": "Wczytywanie obrazka nie powiodło się: $error_message$",
+    "message": "Wczytywanie obrazu nie powiodło się: $error_message$",
     "description": "Displayed on the image properties pop-up when the image could not be loaded",
     "placeholders": {
       "error_message": {
@@ -287,7 +299,7 @@
     }
   },
   "error_analyze_failed": {
-    "message": "Analiza obrazka nie powiodła się: $error_message$",
+    "message": "Analiza obrazu nie powiodła się: $error_message$",
     "description": "Displayed on the image properties pop-up when the image could not be analyzed",
     "placeholders": {
       "error_message": {
