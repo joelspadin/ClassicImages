@@ -1,291 +1,291 @@
 {
-    "extension_name": {
-        "message": "Classic Images"
-    },
-    "extension_desc": {
-        "message": "Враћа неке од могућности за руковање сликама из Опере 12"
-    },
+  "extension_name": {
+    "message": "Classic Images"
+  },
+  "extension_desc": {
+    "message": "Враћа неке од могућности за руковање сликама из Опере 12"
+  },
 
-    "plural_rule_zero": {
-        "message": "",
-        "description": "CLDR plural rules. Copy the rules for your language from https://github.com/santhoshtr/CLDRPluralRuleParser/blob/master/data/plurals.json. If your language does not use a plural group, use an empty string."
-    },
-    "plural_rule_one": {
-        "message": "v = 0 and i % 10 = 1 and i % 100 != 11 or f % 10 = 1 and f % 100 != 11 @integer 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, … @decimal 0.1, 1.1, 2.1, 3.1, 4.1, 5.1, 6.1, 7.1, 10.1, 100.1, 1000.1, …"
-    },
-    "plural_rule_two": {
-        "message": ""
-    },
-    "plural_rule_few": {
-        "message": "v = 0 and i % 10 = 2..4 and i % 100 != 12..14 or f % 10 = 2..4 and f % 100 != 12..14 @integer 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … @decimal 0.2~0.4, 1.2~1.4, 2.2~2.4, 3.2~3.4, 4.2~4.4, 5.2, 10.2, 100.2, 1000.2, …"
-    },
-    "plural_rule_many": {
-        "message": ""
-    },
-    "plural_rule_other": {
-        "message": " @integer 0, 5~19, 100, 1000, 10000, 100000, 1000000, … @decimal 0.0, 0.5~1.0, 1.5~2.0, 2.5~2.7, 10.0, 100.0, 1000.0, 10000.0, 100000.0, 1000000.0, …"
-    },
-    "thousands_separator": {
-        "message": ",",
-        "description": "Character used to separate groups of three digits in large numbers"
-    },
+  "plural_rule_zero": {
+    "message": "",
+    "description": "CLDR plural rules. Copy the rules for your language from https://github.com/santhoshtr/CLDRPluralRuleParser/blob/master/data/plurals.json. If your language does not use a plural group, use an empty string."
+  },
+  "plural_rule_one": {
+    "message": "v = 0 and i % 10 = 1 and i % 100 != 11 or f % 10 = 1 and f % 100 != 11 @integer 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, … @decimal 0.1, 1.1, 2.1, 3.1, 4.1, 5.1, 6.1, 7.1, 10.1, 100.1, 1000.1, …"
+  },
+  "plural_rule_two": {
+    "message": ""
+  },
+  "plural_rule_few": {
+    "message": "v = 0 and i % 10 = 2..4 and i % 100 != 12..14 or f % 10 = 2..4 and f % 100 != 12..14 @integer 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … @decimal 0.2~0.4, 1.2~1.4, 2.2~2.4, 3.2~3.4, 4.2~4.4, 5.2, 10.2, 100.2, 1000.2, …"
+  },
+  "plural_rule_many": {
+    "message": ""
+  },
+  "plural_rule_other": {
+    "message": " @integer 0, 5~19, 100, 1000, 10000, 100000, 1000000, … @decimal 0.0, 0.5~1.0, 1.5~2.0, 2.5~2.7, 10.0, 100.0, 1000.0, 10000.0, 100000.0, 1000000.0, …"
+  },
+  "thousands_separator": {
+    "message": ",",
+    "description": "Character used to separate groups of three digits in large numbers"
+  },
 
-    "by": {
-        "message": "Аутор:",
-        "description": "Appears on the options page as 'By [Extension Author]'"
-    },
+  "by": {
+    "message": "Аутор:",
+    "description": "Appears on the options page as 'By [Extension Author]'"
+  },
 
-    "ctx_image_properties": {
-        "message": "Својства слике...",
-        "description": "Text for the context menu item"
-    },
-    "title_options_page_tab": {
-        "message": "Classic Images Подешавања",
-        "description": "Tab title for the options page"
-    },
-    "title_image_properties": {
-        "message": "Својства слике",
-        "description": "Title of the the image properties pop-up"
-    },
-    "title_image_actions": {
-        "message": "Преузимање слике",
-        "description": "Title for the options page: image downloading actions"
-    },
-    "title_if_downloads_fail": {
-        "message": "Ако слика не успе да се преузме са одређених сајтова",
-        "description": "Title for the options page: image download workaround"
-    },
-    "title_restricted_domains": {
-        "message": "Домени са ограничењима (унесите један по линији):",
-        "description": "Title for the text field where a user may enter a list of domains to which the download workaround should be applied"
-    },
-    "title_credits": {
-        "message": "Заслуге",
-        "description": "Title for the options page: credits section"
-    },
+  "ctx_image_properties": {
+    "message": "Својства слике...",
+    "description": "Text for the context menu item"
+  },
+  "title_options_page_tab": {
+    "message": "Classic Images Подешавања",
+    "description": "Tab title for the options page"
+  },
+  "title_image_properties": {
+    "message": "Својства слике",
+    "description": "Title of the the image properties pop-up"
+  },
+  "title_image_actions": {
+    "message": "Преузимање слике",
+    "description": "Title for the options page: image downloading actions"
+  },
+  "title_if_downloads_fail": {
+    "message": "Ако слика не успе да се преузме са одређених сајтова",
+    "description": "Title for the options page: image download workaround"
+  },
+  "title_restricted_domains": {
+    "message": "Домени са ограничењима (унесите један по линији):",
+    "description": "Title for the text field where a user may enter a list of domains to which the download workaround should be applied"
+  },
+  "title_credits": {
+    "message": "Заслуге",
+    "description": "Title for the options page: credits section"
+  },
 
-    "info_if_downloads_fail": {
-        "message": "Акција <code>Сачувај као...</code> користи API преузимања који понекад не успева на сајтовима који спречавају активну везу. Ако преузимање не успе приказујући грешку <strong>'Прекинуто: Проблем са сервером'</strong>, додајте тај сајт на листу испод. Ово омогућава заобилазницу која обично реши проблем, али дијалог за чување и напредак преузимања се неће појавити док се слика у потпуности не преузме.",
-        "description": "Description for the image download workaround"
-    },
-    "info_special_patterns": {
-        "message": "Следећи специјални шаблони се могу користити:",
-        "description": "Precedes a listing of special codes that may be used for the image download workaround"
-    },
+  "info_if_downloads_fail": {
+    "message": "Акција <code>Сачувај као...</code> користи API преузимања који понекад не успева на сајтовима који спречавају активну везу. Ако преузимање не успе приказујући грешку <strong>'Прекинуто: Проблем са сервером'</strong>, додајте тај сајт на листу испод. Ово омогућава заобилазницу која обично реши проблем, али дијалог за чување и напредак преузимања се неће појавити док се слика у потпуности не преузме.",
+    "description": "Description for the image download workaround"
+  },
+  "info_special_patterns": {
+    "message": "Следећи специјални шаблони се могу користити:",
+    "description": "Precedes a listing of special codes that may be used for the image download workaround"
+  },
 
-    "warn_no_downloads_api": {
-        "message": "Акција <code>Сачувај као...</code> неће радити зато што ваш интернет прегледач не подржава API преузимања. За пуну функционалност користите Опера 20 или више.",
-        "description": "Message which appears on the options page when the downloads API is unsupported"
-    },
+  "warn_no_downloads_api": {
+    "message": "Акција <code>Сачувај као...</code> неће радити зато што ваш интернет прегледач не подржава API преузимања. За пуну функционалност користите Опера 20 или више.",
+    "description": "Message which appears on the options page when the downloads API is unsupported"
+  },
 
-    "alt": {
-        "message": "Alt",
-        "description": "The Alt key on a keyboard"
-    },
-    "ctrl": {
-        "message": "Ctrl",
-        "description": "The Ctrl key on a keyboard"
-    },
-    "shift": {
-        "message": "Shift",
-        "description": "The Shift key on a keyboard"
-    },
-    "click": {
-        "message": "Клик",
-        "description": "Action performed when pressing a mouse button"
-    },
-    "save_as": {
-        "message": "Сачувај као...",
-        "description": "Option which opens a file dialog when saving an image"
-    },
-    "save_to_downloads": {
-        "message": "Сачувај у 'Преузимања'",
-        "description": "Option which saves images directly to the downloads folder"
-    },
-    "browser_default": {
-        "message": "Подразумевано",
-        "description": "Option which leaves the browser behavior unchanged"
-    },
-    "zero_or_more_chars": {
-        "message": "Појављивање претходног карактера нула или више пута",
-        "description": "Pattern description for * which matches zero or more characters"
-    },
-    "bracketed_chars_optional": {
-        "message": "Карактери унутар заграда су необавезни",
-        "description": "Pattern description for [abc] where the characters inside brackets may or may not be present"
-    },
-    "any_subdomain": {
-        "message": "Било који поддомен или без поддомена",
-        "description": "Pattern description for [*.] which is a useful form of the bracket pattern that matches any website's domain or subdomain"
-    },
+  "alt": {
+    "message": "Alt",
+    "description": "The Alt key on a keyboard"
+  },
+  "ctrl": {
+    "message": "Ctrl",
+    "description": "The Ctrl key on a keyboard"
+  },
+  "shift": {
+    "message": "Shift",
+    "description": "The Shift key on a keyboard"
+  },
+  "click": {
+    "message": "Клик",
+    "description": "Action performed when pressing a mouse button"
+  },
+  "save_as": {
+    "message": "Сачувај као...",
+    "description": "Option which opens a file dialog when saving an image"
+  },
+  "save_to_downloads": {
+    "message": "Сачувај у 'Преузимања'",
+    "description": "Option which saves images directly to the downloads folder"
+  },
+  "browser_default": {
+    "message": "Подразумевано",
+    "description": "Option which leaves the browser behavior unchanged"
+  },
+  "zero_or_more_chars": {
+    "message": "Појављивање претходног карактера нула или више пута",
+    "description": "Pattern description for * which matches zero or more characters"
+  },
+  "bracketed_chars_optional": {
+    "message": "Карактери унутар заграда су необавезни",
+    "description": "Pattern description for [abc] where the characters inside brackets may or may not be present"
+  },
+  "any_subdomain": {
+    "message": "Било који поддомен или без поддомена",
+    "description": "Pattern description for [*.] which is a useful form of the bracket pattern that matches any website's domain or subdomain"
+  },
 
-    "tab_general": {
-        "message": "Опште",
-        "description": "Tab title for the image properties pop-up. Refers to info used by all image types."
-    },
-    "tab_metadata": {
-        "message": "Метаподаци",
-        "description": "Tab title for the image properties pop-up. Refers to data embedded within an image, such as Exif data."
-    },
-    "prop_header_width": {
-        "message": "110px",
-        "description": "Width of the property headers on the image properties pop-up"
-    },
-    "prop_dimensions": {
-        "message": "Димензије",
-        "description": "Header for the image dimensions"
-    },
-    "val_dimensions": {
-        "message": "$width$ × $height$ пиксела",
-        "description": "Value for the image dimensions",
-        "placeholders": {
-            "width": {
-                "content": "$1",
-                "example": "1280"
-            },
-            "height": {
-                "content": "$2",
-                "example": "720"
-            }
-        }
-    },
-    "prop_bitdepth": {
-        "message": "Дубина боје",
-        "description": "Header for the image bit depth"
-    },
-    "val_bitdepth": {
-        "message": "$bits$ бита по пикселу",
-        "description": "Value for the image bit depth",
-        "placeholders": {
-            "bits": {
-                "content": "$1",
-                "example": "24"
-            }
-        }
-    },
-    "prop_imagetype": {
-        "message": "Тип слике",
-        "description": "Header for the image format"
-    },
-    "val_imagetype": {
-        "message": "$format$ ($mimetype$)",
-        "description": "Value for the image format",
-        "placeholders": {
-            "format": {
-                "content": "$1",
-                "example": "PNG"
-            },
-            "mimetype": {
-                "content": "$2",
-                "example": "image/png"
-            }
-        }
-    },
-    "unknown": {
-        "message": "Непознато",
-        "description": "Displayed for $format$ in val_imagetype when the format cannot be determined from the MIME type"
-    },
-    "prop_filesize": {
-        "message": "Величина датотеке",
-        "description": "Header for the image file size"
-    },
-    "val_filesize": {
-        "message": "$humansize$ ($bytesize$ бајтова)",
-        "description": "Value for the image file size",
-        "placeholders": {
-            "humansize": {
-                "content": "$1",
-                "example": "16 kB"
-            },
-            "bytesize": {
-                "content": "$2",
-                "example": "16000"
-            }
-        }
-    },
-    "prop_animation": {
-        "message": "Анимација",
-        "description": "Header for the image animation data"
-    },
-    "val_animation_duration": {
-        "message": "$frame_count$ $frames$ у $duration$ $seconds$ ($framerate$ fps)",
-        "description": "Value for the image animation data with duration",
-        "placeholders": {
-            "frame_count": {
-                "content": "$1",
-                "example": "30"
-            },
-            "frames": {
-                "content": "$2",
-                "example": "frames (uses cnt_frames)"
-            },
-            "duration": {
-                "content": "$3",
-                "example": "2"
-            },
-            "seconds": {
-                "content": "$4",
-                "example": "seconds (uses cnt_seconds)"
-            },
-            "framerate": {
-                "content": "$5",
-                "example": "15"
-            }
-        }
-    },
-    "val_animation": {
-        "message": "$frame_count$ $frames$",
-        "description": "Value for the image animation data without duration",
-        "placeholders": {
-            "frame_count": {
-                "content": "$1",
-                "example": "30"
-            },
-            "frames": {
-                "content": "$2",
-                "example": "frames (uses cnt_frames)"
-            }
-        }
-    },
-    "cnt_frames": {
-        "message": "слика;слике;слика",
-        "description": "Number of frames in an animation. List CLDR plural forms in order zero;one;two;few;many;other. Omit plural forms not used by your language."
-    },
-    "cnt_seconds": {
-        "message": "секунди;секунде;секунди",
-        "description": "Unit of time. List CLDR plural forms in order zero;one;two;few;many;other. Omit plural forms not used by your language."
-    },
-    "prop_address": {
-        "message": "Адреса",
-        "description": "Header for the image URL"
-    },
-
-    "analyzing": {
-        "message": "Анализирање",
-        "description": "Displayed for an image property when the value is not yet available because Classic Images is still analyzing the image"
-    },
-
-    "close": {
-        "message": "Затвори",
-        "description": "Text for the button which closes a pop-up"
-    },
-
-    "error_load_failed": {
-        "message": "Неуспешно учитавање слике: $error_message$",
-        "description": "Displayed on the image properties pop-up when the image could not be loaded",
-        "placeholders": {
-            "error_message": {
-                "content": "$1"
-            }
-        }
-    },
-    "error_analyze_failed": {
-        "message": "Неуспешно анализирање слике: $error_message$",
-        "description": "Displayed on the image properties pop-up when the image could not be analyzed",
-        "placeholders": {
-            "error_message": {
-                "content": "$1"
-            }
-        }
+  "tab_general": {
+    "message": "Опште",
+    "description": "Tab title for the image properties pop-up. Refers to info used by all image types."
+  },
+  "tab_metadata": {
+    "message": "Метаподаци",
+    "description": "Tab title for the image properties pop-up. Refers to data embedded within an image, such as Exif data."
+  },
+  "prop_header_width": {
+    "message": "110px",
+    "description": "Width of the property headers on the image properties pop-up"
+  },
+  "prop_dimensions": {
+    "message": "Димензије",
+    "description": "Header for the image dimensions"
+  },
+  "val_dimensions": {
+    "message": "$width$ × $height$ пиксела",
+    "description": "Value for the image dimensions",
+    "placeholders": {
+      "width": {
+        "content": "$1",
+        "example": "1280"
+      },
+      "height": {
+        "content": "$2",
+        "example": "720"
+      }
     }
+  },
+  "prop_bitdepth": {
+    "message": "Дубина боје",
+    "description": "Header for the image bit depth"
+  },
+  "val_bitdepth": {
+    "message": "$bits$ бита по пикселу",
+    "description": "Value for the image bit depth",
+    "placeholders": {
+      "bits": {
+        "content": "$1",
+        "example": "24"
+      }
+    }
+  },
+  "prop_imagetype": {
+    "message": "Тип слике",
+    "description": "Header for the image format"
+  },
+  "val_imagetype": {
+    "message": "$format$ ($mimetype$)",
+    "description": "Value for the image format",
+    "placeholders": {
+      "format": {
+        "content": "$1",
+        "example": "PNG"
+      },
+      "mimetype": {
+        "content": "$2",
+        "example": "image/png"
+      }
+    }
+  },
+  "unknown": {
+    "message": "Непознато",
+    "description": "Displayed for $format$ in val_imagetype when the format cannot be determined from the MIME type"
+  },
+  "prop_filesize": {
+    "message": "Величина датотеке",
+    "description": "Header for the image file size"
+  },
+  "val_filesize": {
+    "message": "$humansize$ ($bytesize$ бајтова)",
+    "description": "Value for the image file size",
+    "placeholders": {
+      "humansize": {
+        "content": "$1",
+        "example": "16 kB"
+      },
+      "bytesize": {
+        "content": "$2",
+        "example": "16000"
+      }
+    }
+  },
+  "prop_animation": {
+    "message": "Анимација",
+    "description": "Header for the image animation data"
+  },
+  "val_animation_duration": {
+    "message": "$frame_count$ $frames$ у $duration$ $seconds$ ($framerate$ fps)",
+    "description": "Value for the image animation data with duration",
+    "placeholders": {
+      "frame_count": {
+        "content": "$1",
+        "example": "30"
+      },
+      "frames": {
+        "content": "$2",
+        "example": "frames (uses cnt_frames)"
+      },
+      "duration": {
+        "content": "$3",
+        "example": "2"
+      },
+      "seconds": {
+        "content": "$4",
+        "example": "seconds (uses cnt_seconds)"
+      },
+      "framerate": {
+        "content": "$5",
+        "example": "15"
+      }
+    }
+  },
+  "val_animation": {
+    "message": "$frame_count$ $frames$",
+    "description": "Value for the image animation data without duration",
+    "placeholders": {
+      "frame_count": {
+        "content": "$1",
+        "example": "30"
+      },
+      "frames": {
+        "content": "$2",
+        "example": "frames (uses cnt_frames)"
+      }
+    }
+  },
+  "cnt_frames": {
+    "message": "слика;слике;слика",
+    "description": "Number of frames in an animation. List CLDR plural forms in order zero;one;two;few;many;other. Omit plural forms not used by your language."
+  },
+  "cnt_seconds": {
+    "message": "секунди;секунде;секунди",
+    "description": "Unit of time. List CLDR plural forms in order zero;one;two;few;many;other. Omit plural forms not used by your language."
+  },
+  "prop_address": {
+    "message": "Адреса",
+    "description": "Header for the image URL"
+  },
+
+  "analyzing": {
+    "message": "Анализирање",
+    "description": "Displayed for an image property when the value is not yet available because Classic Images is still analyzing the image"
+  },
+
+  "close": {
+    "message": "Затвори",
+    "description": "Text for the button which closes a pop-up"
+  },
+
+  "error_load_failed": {
+    "message": "Неуспешно учитавање слике: $error_message$",
+    "description": "Displayed on the image properties pop-up when the image could not be loaded",
+    "placeholders": {
+      "error_message": {
+        "content": "$1"
+      }
+    }
+  },
+  "error_analyze_failed": {
+    "message": "Неуспешно анализирање слике: $error_message$",
+    "description": "Displayed on the image properties pop-up when the image could not be analyzed",
+    "placeholders": {
+      "error_message": {
+        "content": "$1"
+      }
+    }
+  }
 }

@@ -1,66 +1,66 @@
 {
-    "name": "__MSG_extension_name__",
-    "version": "1.5",
-    "manifest_version": 2,
-    "default_locale": "en",
+  "name": "__MSG_extension_name__",
+  "version": "1.5",
+  "manifest_version": 2,
+  "default_locale": "en",
 
-    "description": "__MSG_extension_desc__",
-    "developer": {
-        "name": "Joel Spadin",
-        "url": "http://chaosinacan.com"
-    },
-    "icons": {
-        "16": "img/blank.png",
-        "48": "img/icon-48.png"
-    },
+  "description": "__MSG_extension_desc__",
+  "developer": {
+    "name": "Joel Spadin",
+    "url": "http://chaosinacan.com"
+  },
+  "icons": {
+    "16": "img/blank.png",
+    "48": "img/icon-48.png"
+  },
 
-    "background": {
-        "scripts": [
-            "js/lib/storage.js",
-            "js/settings.js",
-            "js/dynamic-inject.js",
-            "js/background.js"
-        ],
-        "persistent": false
-    },
-    "content_scripts": [
-        {
-        "matches": [ "<all_urls>" ],
-        "js": [ "js/inject/keys.js" ],
-        "all_frames": true
-        }
+  "background": {
+    "scripts": [
+      "js/lib/storage.js",
+      "js/settings.js",
+      "js/dynamic-inject.js",
+      "js/background.js"
     ],
-    "content_security_policy": "script-src 'self'; object-src 'self';",
-    "incognito": "spanning",
-    "offline_enabled": true,
-    "options_page": "options-page.html",
-    "permissions": [
-        "contextMenus",
-        "downloads",
-        "storage",
-        "tabs",
-        "<all_urls>"
-    ],
-    "web_accessible_resources": [
-        "css/inject/dialog.css",
-        "css/inject/dialog.css.map",
-        "css/inject/dialog.less",
-        "js/inject/dialog.js.map",
-        "js/inject/dialog.ts",
-        "js/inject/keys.js.map",
-        "js/inject/keys.ts",
-        "js/lib/options-page.js.map",
-        "js/lib/options-page.ts",
-        "js/lib/storage.js.map",
-        "js/lib/storage.ts",
-        "js/dynamic-inject.js.map",
-        "js/dynamic-inject.ts",
-        "js/background.js.map",
-        "js/background.ts",
-        "js/interfaces.ts",
-        "js/options.js.map",
-        "js/options.ts",
-        "js/settings.js.map",
-        "js/settings.ts"
-    ]
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "matches": [ "<all_urls>" ],
+      "js": [ "js/inject/keys.js" ],
+      "all_frames": true
+    }
+  ],
+  "content_security_policy": "script-src 'self'; object-src 'self';",
+  "incognito": "spanning",
+  "offline_enabled": true,
+  "options_page": "options-page.html",
+  "permissions": [
+    "contextMenus",
+    "downloads",
+    "storage",
+    "tabs",
+    "<all_urls>"
+  ],
+  "web_accessible_resources": [
+    "css/inject/dialog.css",
+    "css/inject/dialog.css.map",
+    "css/inject/dialog.less",
+    "js/inject/dialog.js.map",
+    "js/inject/dialog.ts",
+    "js/inject/keys.js.map",
+    "js/inject/keys.ts",
+    "js/lib/options-page.js.map",
+    "js/lib/options-page.ts",
+    "js/lib/storage.js.map",
+    "js/lib/storage.ts",
+    "js/dynamic-inject.js.map",
+    "js/dynamic-inject.ts",
+    "js/background.js.map",
+    "js/background.ts",
+    "js/interfaces.ts",
+    "js/options.js.map",
+    "js/options.ts",
+    "js/settings.js.map",
+    "js/settings.ts"
+  ]
 }

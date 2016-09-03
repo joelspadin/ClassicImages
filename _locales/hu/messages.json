@@ -1,291 +1,291 @@
 ﻿{
-    "extension_name": {
-        "message": "Classic Images"
-    },
-    "extension_desc": {
-        "message": "Visszahozza a képekhez kapcsolódó funciókat az Opera 12-ből"
-    },
+  "extension_name": {
+    "message": "Classic Images"
+  },
+  "extension_desc": {
+    "message": "Visszahozza a képekhez kapcsolódó funciókat az Opera 12-ből"
+  },
 
-    "plural_rule_zero": {
-        "message": "",
-        "description": "CLDR plural rules. Copy the rules for your language from https://github.com/santhoshtr/CLDRPluralRuleParser/blob/master/data/plurals.json. If your language does not use a plural group, use an empty string."
-    },
-    "plural_rule_one": {
-        "message": "i = 1 and v = 0 @integer 1"
-    },
-    "plural_rule_two": {
-        "message": ""
-    },
-    "plural_rule_few": {
-        "message": ""
-    },
-    "plural_rule_many": {
-        "message": ""
-    },
-    "plural_rule_other": {
-        "message": " @integer 0, 2~16, 100, 1000, 10000, 100000, 1000000, … @decimal 0.0~1.5, 10.0, 100.0, 1000.0, 10000.0, 100000.0, 1000000.0, …"
-    },
-    "thousands_separator": {
-        "message": " ",
-        "description": "Character used to separate groups of three digits in large numbers"
-    },
+  "plural_rule_zero": {
+    "message": "",
+    "description": "CLDR plural rules. Copy the rules for your language from https://github.com/santhoshtr/CLDRPluralRuleParser/blob/master/data/plurals.json. If your language does not use a plural group, use an empty string."
+  },
+  "plural_rule_one": {
+    "message": "i = 1 and v = 0 @integer 1"
+  },
+  "plural_rule_two": {
+    "message": ""
+  },
+  "plural_rule_few": {
+    "message": ""
+  },
+  "plural_rule_many": {
+    "message": ""
+  },
+  "plural_rule_other": {
+    "message": " @integer 0, 2~16, 100, 1000, 10000, 100000, 1000000, … @decimal 0.0~1.5, 10.0, 100.0, 1000.0, 10000.0, 100000.0, 1000000.0, …"
+  },
+  "thousands_separator": {
+    "message": " ",
+    "description": "Character used to separate groups of three digits in large numbers"
+  },
 
-    "by": {
-        "message": "Készítette: ",
-        "description": "Appears on the options page as 'By [Extension Author]'"
-    },
+  "by": {
+    "message": "Készítette: ",
+    "description": "Appears on the options page as 'By [Extension Author]'"
+  },
 
-    "ctx_image_properties": {
-        "message": "Kép tulajdonságok...",
-        "description": "Text for the context menu item"
-    },
-    "title_options_page_tab": {
-        "message": "Classic Images beállításai",
-        "description": "Tab title for the options page"
-    },
-    "title_image_properties": {
-        "message": "Kép tulajdonságai",
-        "description": "Title of the the image properties pop-up"
-    },
-    "title_image_actions": {
-        "message": "Kép műveletek",
-        "description": "Title for the options page: image downloading actions"
-    },
-    "title_if_downloads_fail": {
-        "message": "Ha a képet nem tudod letölteni",
-        "description": "Title for the options page: image download workaround"
-    },
-    "title_restricted_domains": {
-        "message": "Korlátozott címek (soronként egy)",
-        "description": "Title for the text field where a user may enter a list of domains to which the download workaround should be applied"
-    },
-    "title_credits": {
-        "message": "Névjegy",
-        "description": "Title for the options page: credits section"
-    },
+  "ctx_image_properties": {
+    "message": "Kép tulajdonságok...",
+    "description": "Text for the context menu item"
+  },
+  "title_options_page_tab": {
+    "message": "Classic Images beállításai",
+    "description": "Tab title for the options page"
+  },
+  "title_image_properties": {
+    "message": "Kép tulajdonságai",
+    "description": "Title of the the image properties pop-up"
+  },
+  "title_image_actions": {
+    "message": "Kép műveletek",
+    "description": "Title for the options page: image downloading actions"
+  },
+  "title_if_downloads_fail": {
+    "message": "Ha a képet nem tudod letölteni",
+    "description": "Title for the options page: image download workaround"
+  },
+  "title_restricted_domains": {
+    "message": "Korlátozott címek (soronként egy)",
+    "description": "Title for the text field where a user may enter a list of domains to which the download workaround should be applied"
+  },
+  "title_credits": {
+    "message": "Névjegy",
+    "description": "Title for the options page: credits section"
+  },
 
-    "info_if_downloads_fail": {
-        "message": "A <code>Mentés másként...</code> művelet egy bővítmény API-t használ, ami nem mindig működik azokon az oldalakon, amik tiltják a direkt linkelést. Ha a letöltés nem sikerül, és a <strong>Megszakítva: Szerver probléma</strong> üzenetet látod, akkor add hozzá az oldal címét az alábbi listához! Ez egy olyan kerülő megoldás, ami általában megoldja a problémát, de a letöltés párbeszédablak csak akkor fog megjelenni, ha a fájl letöltése véget ért.",
-        "description": "Description for the image download workaround"
-    },
-    "info_special_patterns": {
-        "message": "Az alábbi speciális sablonokat használhatod",
-        "description": "Precedes a listing of special codes that may be used for the image download workaround"
-    },
+  "info_if_downloads_fail": {
+    "message": "A <code>Mentés másként...</code> művelet egy bővítmény API-t használ, ami nem mindig működik azokon az oldalakon, amik tiltják a direkt linkelést. Ha a letöltés nem sikerül, és a <strong>Megszakítva: Szerver probléma</strong> üzenetet látod, akkor add hozzá az oldal címét az alábbi listához! Ez egy olyan kerülő megoldás, ami általában megoldja a problémát, de a letöltés párbeszédablak csak akkor fog megjelenni, ha a fájl letöltése véget ért.",
+    "description": "Description for the image download workaround"
+  },
+  "info_special_patterns": {
+    "message": "Az alábbi speciális sablonokat használhatod",
+    "description": "Precedes a listing of special codes that may be used for the image download workaround"
+  },
 
-    "warn_no_downloads_api": {
-        "message": "A <code>Mentés másként...</code> nem fog működni, mert a böngésződ nem támogatja a letöltés API-t. A teljes funkcionalitásért használd az Opera 20-as vagy újabb verzióját!",
-        "description": "Message which appears on the options page when the downloads API is unsupported"
-    },
+  "warn_no_downloads_api": {
+    "message": "A <code>Mentés másként...</code> nem fog működni, mert a böngésződ nem támogatja a letöltés API-t. A teljes funkcionalitásért használd az Opera 20-as vagy újabb verzióját!",
+    "description": "Message which appears on the options page when the downloads API is unsupported"
+  },
 
-    "alt": {
-        "message": "Alt",
-        "description": "The Alt key on a keyboard"
-    },
-    "ctrl": {
-        "message": "Ctrl",
-        "description": "The Ctrl key on a keyboard"
-    },
-    "shift": {
-        "message": "Shift",
-        "description": "The Shift key on a keyboard"
-    },
-    "click": {
-        "message": "Kattintás",
-        "description": "Action performed when pressing a mouse button"
-    },
-    "save_as": {
-        "message": "Mentés másként...",
-        "description": "Option which opens a file dialog when saving an image"
-    },
-    "save_to_downloads": {
-        "message": "Letöltési helyre",
-        "description": "Option which saves images directly to the downloads folder"
-    },
-    "browser_default": {
-        "message": "Alapértelmezett",
-        "description": "Option which leaves the browser behavior unchanged"
-    },
-    "zero_or_more_chars": {
-        "message": "Nulla vagy több bármely karakterből",
-        "description": "Pattern description for * which matches zero or more characters"
-    },
-    "bracketed_chars_optional": {
-        "message": "A szögletes zárójelben lévő karakterek opcionálisak",
-        "description": "Pattern description for [abc] where the characters inside brackets may or may not be present"
-    },
-    "any_subdomain": {
-        "message": "Bármilyen vagy semmilyen aldomain",
-        "description": "Pattern description for [*.] which is a useful form of the bracket pattern that matches any website's domain or subdomain"
-    },
+  "alt": {
+    "message": "Alt",
+    "description": "The Alt key on a keyboard"
+  },
+  "ctrl": {
+    "message": "Ctrl",
+    "description": "The Ctrl key on a keyboard"
+  },
+  "shift": {
+    "message": "Shift",
+    "description": "The Shift key on a keyboard"
+  },
+  "click": {
+    "message": "Kattintás",
+    "description": "Action performed when pressing a mouse button"
+  },
+  "save_as": {
+    "message": "Mentés másként...",
+    "description": "Option which opens a file dialog when saving an image"
+  },
+  "save_to_downloads": {
+    "message": "Letöltési helyre",
+    "description": "Option which saves images directly to the downloads folder"
+  },
+  "browser_default": {
+    "message": "Alapértelmezett",
+    "description": "Option which leaves the browser behavior unchanged"
+  },
+  "zero_or_more_chars": {
+    "message": "Nulla vagy több bármely karakterből",
+    "description": "Pattern description for * which matches zero or more characters"
+  },
+  "bracketed_chars_optional": {
+    "message": "A szögletes zárójelben lévő karakterek opcionálisak",
+    "description": "Pattern description for [abc] where the characters inside brackets may or may not be present"
+  },
+  "any_subdomain": {
+    "message": "Bármilyen vagy semmilyen aldomain",
+    "description": "Pattern description for [*.] which is a useful form of the bracket pattern that matches any website's domain or subdomain"
+  },
 
-    "tab_general": {
-        "message": "Általános",
-        "description": "Tab title for the image properties pop-up. Refers to info used by all image types."
-    },
-    "tab_metadata": {
-        "message": "Metaadatok",
-        "description": "Tab title for the image properties pop-up. Refers to data embedded within an image, such as Exif data."
-    },
-    "prop_header_width": {
-        "message": "80px",
-        "description": "Width of the property headers on the image properties pop-up"
-    },
-    "prop_dimensions": {
-        "message": "Méretek",
-        "description": "Header for the image dimensions"
-    },
-    "val_dimensions": {
-        "message": "$width$ × $height$ képpont",
-        "description": "Value for the image dimensions",
-        "placeholders": {
-            "width": {
-                "content": "$1",
-                "example": "1280"
-            },
-            "height": {
-                "content": "$2",
-                "example": "720"
-            }
-        }
-    },
-    "prop_bitdepth": {
-        "message": "Színmélység",
-        "description": "Header for the image bit depth"
-    },
-    "val_bitdepth": {
-        "message": "$bits$ bit per képpont",
-        "description": "Value for the image bit depth",
-        "placeholders": {
-            "bits": {
-                "content": "$1",
-                "example": "24"
-            }
-        }
-    },
-    "prop_imagetype": {
-        "message": "Kép típusa",
-        "description": "Header for the image format"
-    },
-    "val_imagetype": {
-        "message": "$format$ ($mimetype$)",
-        "description": "Value for the image format",
-        "placeholders": {
-            "format": {
-                "content": "$1",
-                "example": "PNG"
-            },
-            "mimetype": {
-                "content": "$2",
-                "example": "image/png"
-            }
-        }
-    },
-    "unknown": {
-        "message": "Ismeretlen",
-        "description": "Displayed for $format$ in val_imagetype when the format cannot be determined from the MIME type"
-    },
-    "prop_filesize": {
-        "message": "Fájl mérete",
-        "description": "Header for the image file size"
-    },
-    "val_filesize": {
-        "message": "$humansize$ ($bytesize$ bájt)",
-        "description": "Value for the image file size",
-        "placeholders": {
-            "humansize": {
-                "content": "$1",
-                "example": "16 kB"
-            },
-            "bytesize": {
-                "content": "$2",
-                "example": "16000"
-            }
-        }
-    },
-    "prop_animation": {
-        "message": "Animáció",
-        "description": "Header for the image animation data"
-    },
-    "val_animation_duration": {
-        "message": "$frame_count$ $frames$ $duration$ $seconds$ alatt ($framerate$ fps)",
-        "description": "Value for the image animation data with duration",
-        "placeholders": {
-            "frame_count": {
-                "content": "$1",
-                "example": "30"
-            },
-            "frames": {
-                "content": "$2",
-                "example": "frames (uses cnt_frames)"
-            },
-            "duration": {
-                "content": "$3",
-                "example": "2"
-            },
-            "seconds": {
-                "content": "$4",
-                "example": "seconds (uses cnt_seconds)"
-            },
-            "framerate": {
-                "content": "$5",
-                "example": "15"
-            }
-        }
-    },
-    "val_animation": {
-        "message": "$frame_count$ $frames$",
-        "description": "Value for the image animation data without duration",
-        "placeholders": {
-            "frame_count": {
-                "content": "$1",
-                "example": "30"
-            },
-            "frames": {
-                "content": "$2",
-                "example": "frames (uses cnt_frames)"
-            }
-        }
-    },
-    "cnt_frames": {
-        "message": "képkocka",
-        "description": "Number of frames in an animation. List CLDR plural forms in order zero;one;two;few;many;other. Omit plural forms not used by your language."
-    },
-    "cnt_seconds": {
-        "message": "másodperc",
-        "description": "Unit of time. List CLDR plural forms in order zero;one;two;few;many;other. Omit plural forms not used by your language."
-    },
-    "prop_address": {
-        "message": "Kép címe",
-        "description": "Header for the image URL"
-    },
-
-    "analyzing": {
-        "message": "Feldolgozás",
-        "description": "Displayed for an image property when the value is not yet available because Classic Images is still analyzing the image"
-    },
-
-    "close": {
-        "message": "Bezárás",
-        "description": "Text for the button which closes a pop-up"
-    },
-
-    "error_load_failed": {
-        "message": "Nem sikerült betölteni a képet: $error_message$",
-        "description": "Displayed on the image properties pop-up when the image could not be loaded",
-        "placeholders": {
-            "error_message": {
-                "content": "$1"
-            }
-        }
-    },
-    "error_analyze_failed": {
-        "message": "Nem sikerült elemezni a képet: $error_message$",
-        "description": "Displayed on the image properties pop-up when the image could not be analyzed",
-        "placeholders": {
-            "error_message": {
-                "content": "$1"
-            }
-        }
+  "tab_general": {
+    "message": "Általános",
+    "description": "Tab title for the image properties pop-up. Refers to info used by all image types."
+  },
+  "tab_metadata": {
+    "message": "Metaadatok",
+    "description": "Tab title for the image properties pop-up. Refers to data embedded within an image, such as Exif data."
+  },
+  "prop_header_width": {
+    "message": "80px",
+    "description": "Width of the property headers on the image properties pop-up"
+  },
+  "prop_dimensions": {
+    "message": "Méretek",
+    "description": "Header for the image dimensions"
+  },
+  "val_dimensions": {
+    "message": "$width$ × $height$ képpont",
+    "description": "Value for the image dimensions",
+    "placeholders": {
+      "width": {
+        "content": "$1",
+        "example": "1280"
+      },
+      "height": {
+        "content": "$2",
+        "example": "720"
+      }
     }
+  },
+  "prop_bitdepth": {
+    "message": "Színmélység",
+    "description": "Header for the image bit depth"
+  },
+  "val_bitdepth": {
+    "message": "$bits$ bit per képpont",
+    "description": "Value for the image bit depth",
+    "placeholders": {
+      "bits": {
+        "content": "$1",
+        "example": "24"
+      }
+    }
+  },
+  "prop_imagetype": {
+    "message": "Kép típusa",
+    "description": "Header for the image format"
+  },
+  "val_imagetype": {
+    "message": "$format$ ($mimetype$)",
+    "description": "Value for the image format",
+    "placeholders": {
+      "format": {
+        "content": "$1",
+        "example": "PNG"
+      },
+      "mimetype": {
+        "content": "$2",
+        "example": "image/png"
+      }
+    }
+  },
+  "unknown": {
+    "message": "Ismeretlen",
+    "description": "Displayed for $format$ in val_imagetype when the format cannot be determined from the MIME type"
+  },
+  "prop_filesize": {
+    "message": "Fájl mérete",
+    "description": "Header for the image file size"
+  },
+  "val_filesize": {
+    "message": "$humansize$ ($bytesize$ bájt)",
+    "description": "Value for the image file size",
+    "placeholders": {
+      "humansize": {
+        "content": "$1",
+        "example": "16 kB"
+      },
+      "bytesize": {
+        "content": "$2",
+        "example": "16000"
+      }
+    }
+  },
+  "prop_animation": {
+    "message": "Animáció",
+    "description": "Header for the image animation data"
+  },
+  "val_animation_duration": {
+    "message": "$frame_count$ $frames$ $duration$ $seconds$ alatt ($framerate$ fps)",
+    "description": "Value for the image animation data with duration",
+    "placeholders": {
+      "frame_count": {
+        "content": "$1",
+        "example": "30"
+      },
+      "frames": {
+        "content": "$2",
+        "example": "frames (uses cnt_frames)"
+      },
+      "duration": {
+        "content": "$3",
+        "example": "2"
+      },
+      "seconds": {
+        "content": "$4",
+        "example": "seconds (uses cnt_seconds)"
+      },
+      "framerate": {
+        "content": "$5",
+        "example": "15"
+      }
+    }
+  },
+  "val_animation": {
+    "message": "$frame_count$ $frames$",
+    "description": "Value for the image animation data without duration",
+    "placeholders": {
+      "frame_count": {
+        "content": "$1",
+        "example": "30"
+      },
+      "frames": {
+        "content": "$2",
+        "example": "frames (uses cnt_frames)"
+      }
+    }
+  },
+  "cnt_frames": {
+    "message": "képkocka",
+    "description": "Number of frames in an animation. List CLDR plural forms in order zero;one;two;few;many;other. Omit plural forms not used by your language."
+  },
+  "cnt_seconds": {
+    "message": "másodperc",
+    "description": "Unit of time. List CLDR plural forms in order zero;one;two;few;many;other. Omit plural forms not used by your language."
+  },
+  "prop_address": {
+    "message": "Kép címe",
+    "description": "Header for the image URL"
+  },
+
+  "analyzing": {
+    "message": "Feldolgozás",
+    "description": "Displayed for an image property when the value is not yet available because Classic Images is still analyzing the image"
+  },
+
+  "close": {
+    "message": "Bezárás",
+    "description": "Text for the button which closes a pop-up"
+  },
+
+  "error_load_failed": {
+    "message": "Nem sikerült betölteni a képet: $error_message$",
+    "description": "Displayed on the image properties pop-up when the image could not be loaded",
+    "placeholders": {
+      "error_message": {
+        "content": "$1"
+      }
+    }
+  },
+  "error_analyze_failed": {
+    "message": "Nem sikerült elemezni a képet: $error_message$",
+    "description": "Displayed on the image properties pop-up when the image could not be analyzed",
+    "placeholders": {
+      "error_message": {
+        "content": "$1"
+      }
+    }
+  }
 }
