@@ -135,23 +135,23 @@
     "description": "Tab title for the image properties pop-up. Refers to data embedded within an image, such as Exif data."
   },
   "prop_header_width": {
-    "message": "80 pikseli",
+    "message": "100px",
     "description": "Width of the property headers on the image properties pop-up"
   },
   "prop_alt_text": {
-    "message": "Tekst alternatywny",
+    "message": "Tekst alternatywny obrazu:",
     "description": "Header for the image's alternate text"
   },
   "prop_title": {
-    "message": "Tytuł",
+    "message": "Tytuł obrazu:",
     "description": "Header for the image's title attribute"
   },
   "prop_dimensions": {
-    "message": "Wymiary",
+    "message": "Wymiary obrazu:",
     "description": "Header for the image dimensions"
   },
   "prop_on_screen_dimensions": {
-    "message": "Rozmiar ekranu",
+    "message": "Wymiary obrazu na ekranie:",
     "description": "Header for the dimensions of the image as it appears on the screen"
   },
   "val_dimensions": {
@@ -169,7 +169,7 @@
     }
   },
   "prop_bitdepth": {
-    "message": "Głębia bitów",
+    "message": "Głębia bitów obrazu:",
     "description": "Header for the image bit depth"
   },
   "val_bitdepth": {
@@ -183,7 +183,7 @@
     }
   },
   "prop_imagetype": {
-    "message": "Typ obrazu",
+    "message": "Typ obrazu:",
     "description": "Header for the image format"
   },
   "val_imagetype": {
@@ -205,7 +205,7 @@
     "description": "Displayed for $format$ in val_imagetype when the format cannot be determined from the MIME type"
   },
   "prop_filesize": {
-    "message": "Rozmiar pliku",
+    "message": "Rozmiar pliku obrazu:",
     "description": "Header for the image file size"
   },
   "val_filesize": {
@@ -223,7 +223,7 @@
     }
   },
   "prop_animation": {
-    "message": "Animacja",
+    "message": "Dane animacji obrazu:",
     "description": "Header for the image animation data"
   },
   "val_animation_duration": {
@@ -275,7 +275,7 @@
     "description": "Unit of time. List CLDR plural forms in order zero;one;two;few;many;other. Omit plural forms not used by your language."
   },
   "prop_address": {
-    "message": "Adres łącza",
+    "message": "Adres łącza obrazu:",
     "description": "Header for the image URL"
   },
 
@@ -299,7 +299,7 @@
     }
   },
   "error_analyze_failed": {
-    "message": "Analiza obrazu nie powiodła się: $error_message$",
+    "message": "Analizowanie obrazu nie powiodło się: $error_message$",
     "description": "Displayed on the image properties pop-up when the image could not be analyzed",
     "placeholders": {
       "error_message": {
