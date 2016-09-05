@@ -129,7 +129,7 @@
   },
   "prop_header_width": {
     "message": "80px",
-    "description": "Width of the property headers on the image properties pop-up"
+    "description": "Width of the property headers on the image properties pop-up. This is a CSS value. Change the number as necessary, but do not translate it."
   },
   "prop_alt_text": {
     "message": "Alt Text",
